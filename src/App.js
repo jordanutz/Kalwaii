@@ -1,14 +1,20 @@
-import React, { Component } from 'react';
-import './Reset.css';
+import React, { Component } from 'react'
+import './Reset.scss'
+
+import Navigation from './Components/Navigation/Navigation'
+import Footer from './Components/Footer/Footer'
+import routes from './routes'
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        LifeSum
+        <Navigation />
+        {routes}
+        <Footer />
       </div>
     );
   }
 }
 
-export default App;
+export default App

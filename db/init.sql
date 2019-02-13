@@ -33,7 +33,8 @@ create table user_records (
     user_id integer references diet_users(id),
     meal_id integer references meal(id),
     food_id integer references food(id),
-    date_posted date
+    date_posted date not null,
+    quantity integer not null
 )
 
 create table food (
@@ -44,7 +45,7 @@ create table food (
     protein decimal not null,
     carbohydrates decimal not null,
     fat decimal not null,
-    sugar decimal not null, 
+    sugar decimal not null,
     saturated_fat decimal not null,
     unsaturated_fat decimal not null,
     cholesterol decimal not null,

@@ -1,0 +1,72 @@
+@import '../../index';
+
+footer {
+  max-width: 100vw;
+  background: $primary-color;
+  height: auto;
+  color: white;
+
+  .FooterContainer {
+    max-width: 70%;
+    height: 100%;
+    padding: 1rem;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    border-bottom: 1px solid #B23333;
+    border-top: 1px solid #B23333;
+  }
+  ul {
+    li {
+      list-style: none;
+      font-weight: 300;
+      font-size: .85rem;
+      text-align: center;
+      cursor: pointer;
+    }
+    li:hover {
+      font-weight: 500;
+    }
+  }
+
+  .FooterRegister {
+    max-width: 70%;
+    margin: 0 auto;
+    display: flex;
+    padding: 2rem 0;
+    justify-content: space-between;
+
+    p {
+      font-size: 1.25rem;
+      font-weight: bolder;
+    }
+
+    button {
+      background: #35C458;
+      border-radius: 3px;
+      cursor: pointer;
+      font-size: 15px;
+      line-height: 15px;
+      padding: 16px;
+      position: relative;
+      color: white;
+      font-weight: bolder;
+      border: none;
+      box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.2), 0px 2px 2px 0px rgba(0,0,0,0.14), 0px 3px 1px -2px rgba(0,0,0,0.12);
+    }
+
+    button:hover {
+      background: #2BA048;
+      transition: 0.3s;
+    }
+  }
+}
+
+#Header {
+  font-weight: bolder;
+  margin-bottom: .5rem;
+}
+
+#Header:hover {
+  font-weight: bolder;
+}
