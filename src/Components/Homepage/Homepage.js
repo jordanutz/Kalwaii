@@ -10,12 +10,11 @@ import Strawberry from '../../assets/strawberry.svg'
 import Jigglypuff from '../../assets/Jigglypuff.png'
 import Cherry from '../../assets/Cherry.svg'
 import Peach from '../../assets/Peach.svg'
-import LifeScore from './assets/lifescore.png'
-import Recipes from './assets/recipes.png'
-import Rocket from './assets/rocket.png'
-import Scale from './assets/scale.png'
-import Sync from './assets/sync.png'
-
+import LifeScore from './assets/lifescore.svg'
+import Recipes from './assets/recipes.svg'
+import Bottle from './assets/bottle.svg'
+import Scale from './assets/scale.svg'
+import Sync from './assets/sync.svg'
 
 const Homepage = (props) => {
   return (
@@ -29,7 +28,7 @@ const Homepage = (props) => {
           <Carousel controls={false}>
             <Carousel.Item>
               <div className="CarouselHeader">
-                <img id="Width" src={Rocket} alt="Rocket Icon" />
+                <img id="Width" src={Bottle} alt="Bottle Icon" />
                 <h3>3 Week Weight Loss Program</h3>
               </div>
               <h4>Kickstart some serious weight loss with our 3 Week Weight Loss Plan, complete with shopping list + meal planner.</h4>
