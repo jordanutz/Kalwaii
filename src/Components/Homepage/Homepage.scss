@@ -18,18 +18,48 @@
     display: flex;
     flex-direction: column;
 
+    .HomepageCarousel {
+      max-width: 45%;
+      padding-left: 12rem;
+
+      img {
+        width: 60px;
+        height: 75px;
+      }
+
+      #Width {
+        width: 75px;
+      }
+
+      h3 {
+        font-weight: 500;
+        color: $accent-three;
+        margin-bottom: 1rem;
+        margin-bottom: 1rem;
+      }
+
+      h4 {
+        font-size: .85rem;
+        color: $accent-three;
+        font-weight: 300;
+      }
+
+      p {
+        text-align: left;
+      }
+    }
 
     h1 {
       color: $accent-three;
       width: 100%;
       height: auto;
-      padding: 3rem 5rem 1rem 5rem;
-      font-size: 2.25rem;
+      padding: 3rem 5rem 1rem 8rem;
+      font-size: 2.5rem;
       font-weight: bolder;
     }
 
     p {
-      padding: 0rem 5rem 1rem 5rem;
+      padding: 0rem 5rem 1rem 8rem;
       max-width: 600px;
       color: $accent-three;
       font-size: .85rem;
@@ -37,14 +67,12 @@
     }
 
     h2 {
-      padding: 1rem 5rem 1rem 5rem;
+      padding: 1rem 5rem 1rem 8rem;
       font-size: 2rem;
       font-weight: 700;
       color: $accent-three;
 
     }
-
-
   }
 
   .HomepageMain {
@@ -128,6 +156,16 @@
   background: #B23333;
   border-radius: 20px;
   bottom: 0;
+}
+
+.carousel {
+  height: 200px;
+}
+
+.CarouselHeader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 @keyframes slide {
