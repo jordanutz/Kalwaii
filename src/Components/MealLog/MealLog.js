@@ -1,8 +1,8 @@
 import React, {Component} from 'react'
 import './MealLog.scss'
 
-import Calendar from './Calendar/Calendar'
-import DailyMeal from './DailyMeal/DailyMeal'
+import Calendar from '../Calendar/Calendar'
+import DailyMeal from '../DailyMeal/DailyMeal'
 
 
 class MealLog extends Component {

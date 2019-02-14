@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {Component} from 'react'
 import './Calendar.scss'
 
 class Calendar extends Component {

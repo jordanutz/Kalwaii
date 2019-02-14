@@ -17,13 +17,13 @@ import Scale from './assets/scale.svg'
 import Sync from './assets/sync.svg'
 
 const Homepage = (props) => {
+
   return (
     <div className="Homepage">
       <div className="HomepageHeader">
         <h1>It's time to ditch MyFitnessPal.</h1>
         <p>Finding the right diet or exercise isn’t rocket science. Actually taking the right action can seem like it. With Kalwaii, take control of your goals: track your calories, create customized meal plans that suit your needs using our food database, and log your progress. Simplify your life. </p>
         <h2>Superior Features</h2>
-
         <div className="HomepageCarousel">
           <Carousel controls={false}>
             <Carousel.Item>
@@ -31,7 +31,7 @@ const Homepage = (props) => {
                 <img id="Width" src={Bottle} alt="Bottle Icon" />
                 <h3>3 Week Weight Loss Program</h3>
               </div>
-              <h4>Kickstart some serious weight loss with our 3 Week Weight Loss Plan, complete with shopping list + meal planner.</h4>
+              <h4>Kickstart some serious weight loss with our 3 Week Weight Loss Plan, complete with shopping list and meal planner.</h4>
             </Carousel.Item>
             <Carousel.Item>
               <div className="CarouselHeader">
@@ -52,18 +52,17 @@ const Homepage = (props) => {
                 <img id="Width" src={LifeScore} alt="Life Score Icon" />
                 <h3>Life Score</h3>
               </div>
-              <h4>To help you keep your eyes on the prize, you’ll get insights and advice every step of the way - you’re never alone with Lifesum.</h4>
+              <h4>To help you keep your eyes on the prize, you’ll get insights and advice every step of the way - you’re never alone with Kawaii.</h4>
             </Carousel.Item>
             <Carousel.Item>
               <div className="CarouselHeader">
                 <img id="Width" src={Sync} alt="Sync Icon" />
                 <h3>Sync with Health Apps</h3>
               </div>
-              <h4>Lifesum speaks with most other leading health apps, meaning you can enjoy a smoother road to health.</h4>
+              <h4>Kawaii speaks with most other leading health apps, meaning you can enjoy a smoother road to health.</h4>
             </Carousel.Item>
           </Carousel>
         </div>
-
       </div>
       <div className="HomepageMain">
         <img id="Laptop" src={Laptop} alt="Laptop Icon" />

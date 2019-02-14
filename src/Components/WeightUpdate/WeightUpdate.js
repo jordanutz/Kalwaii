@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import './UpdateWeight.scss'
+import './WeightUpdate.scss'
 
 class UpdateWeight extends Component {
   render () {

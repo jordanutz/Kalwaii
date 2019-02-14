@@ -1,7 +1,15 @@
 import React from 'react'
 import './Footer.scss'
+import {connect} from 'react-redux'
 
 const Footer = (props) => {
+
+  const displayRegister = props.user ? null :
+    <div className="FooterRegister">
+      <p>Ready to try Kawaii? It's free!</p>
+      <button>Sign Up Now</button>
+    </div>
+
   return (
     <footer>
       <div className="FooterContainer">
@@ -42,13 +50,16 @@ const Footer = (props) => {
         </div>
       </div>
 
-      <div className="FooterRegister">
-        <p>Ready to try Kawaii? It's free!</p>
-        <button>Sign Up Now</button>
-      </div>
+      {displayRegister}
 
     </footer>
   )
 }
 
-export default Footer
+const mapStateToProps = (state) => {
+  return {
+    user: state.user
+  }
+}
+
+export default connect(mapStateToProps)(Footer)

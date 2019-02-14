@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import './FoodLog.scss'
 
-import Food from './Food/Food'
+import Food from '../Food/Food'
 
 class FoodLog extends Component {
   render () {

@@ -1,8 +1,8 @@
 import React, {Component} from 'react'
 import './Goals.scss'
 
-import WeightDisplay from './WeightDisplay/WeightDisplay'
-import WeightUpdate from './WeightUpdate/WeightUpdate'
+import WeightDisplay from '../WeightDisplay/WeightDisplay'
+import WeightUpdate from '../WeightUpdate/WeightUpdate'
 
 class Goals extends Component {
   render () {
