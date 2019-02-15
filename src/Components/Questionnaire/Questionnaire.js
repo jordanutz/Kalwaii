@@ -1,5 +1,8 @@
 import React, {Component} from 'react'
 import './Questionnaire.scss'
+import axios from 'axios'
+import {withRouter} from 'react-router-dom'
+import {DropdownButton, Dropdown} from 'react-bootstrap'
 
 class Questionnaire extends Component {
   constructor () {
@@ -15,9 +18,15 @@ class Questionnaire extends Component {
         female: false
       },
       age: '',
-      height: 0,
+      height: '',
       weight: '',
-      goalWeight: '',
+      physicalLevel: {
+        sedentary: false,
+        light: false,
+        moderate: false,
+        high: false
+      },
+      bodyFat: '',
       toggleQuestionnare: {
         goals: true,
         age: false,
@@ -97,12 +106,76 @@ class Questionnaire extends Component {
       })
     }
 
-    submitProfile = (goalToggle, gender, age, height, weight, goalWeight) => {
+    toggleSedentary = () => {
+      this.setState({
+        physicalLevel: {
+          sedentary: !this.state.physicalLevel.sedentary,
+          light: false,
+          moderate: false,
+          high: false
+        }
+      })
+    }
+
+    toggleLight = () => {
+      this.setState({
+        physicalLevel: {
+          sedentary: false,
+          light: !this.state.physicalLevel.low,
+          moderate: false,
+          high: false
+        }
+      })
+    }
+
+    toggleModerate = () => {
+      this.setState({
+        physicalLevel: {
+          sedentary: false,
+          light: false,
+          moderate: !this.state.physicalLevel.moderate,
+          high: false
+        }
+      })
+    }
+
+    toggleHigh = () => {
+      this.setState({
+        physicalLevel: {
+          sedentary: false,
+          light: false,
+          moderate: false,
+          high: !this.state.physicalLevel.high
+        }
+      })
+    }
+
+    submitProfile = (id, goalToggle, gender, age, height, weight, bodyFat) => {
+
+      const userProfile = {
+        id: id,
+        goalToggle: goalToggle,
+        gender: gender,
+        age: age,
+        height: height,
+        weight: weight,
+        bodyFat: bodyFat
+      }
+
+      axios.post('/api/user/profile', userProfile).then(res => {
+
+      })
     }
 
    render () {
 
-     const {goalToggle, gender, age, height, weight, goalWeight} = this.state
+     const {goalToggle, gender, age, height, weight, bodyFat} = this.state
+     console.log(this.state)
+
+     const displayDropdown = this.state.physicalLevel.sedentary && "Sedentary Activity" ||
+       this.state.physicalLevel.light && "Light Activity" ||
+       this.state.physicalLevel.moderate && "Moderate Activity" ||
+       this.state.physicalLevel.high && "High Activity" || "Physical Activity Level"
 
      const displayGoals = this.state.toggleQuestionnare.goals &&
        <div className="QuestionnaireSelection" value={this.state.toggleQuestionnare.goals}>
@@ -125,11 +198,17 @@ class Questionnaire extends Component {
         <div className="QuestionnaireSelection" value={this.state.toggleQuestionnare.details}>
           <h1>Physical Details</h1>
           <input placeholder="Your age" name="age" onChange={(name, event) => this.handleInput(name, event)}/>
-          <input placeholder="Your height (in)" name="height" onChange={(name, event) => this.handleInput(name, event)} />
+          <input placeholder="Your height (in)" name="height" onChange={(name, event) => this.handleInput(name, event)}/>
           <button id="Decrement" className="HeightSelection">-</button><button id="Increment" className="HeightSelection">+</button>
           <input placeholder="Your weight (lbs)" name="weight" onChange={(name, event) => this.handleInput(name, event)} />
-          <input placeholder="Goal weight (lbs)" name="goalWeight" onChange={(name, event) => this.handleInput(name, event)} />
-          <button className="QuestionnaireButton" onClick={() => this.submitProfile(goalToggle, gender, age, weight, height, goalWeight)}>Submit</button>
+          <DropdownButton variant="light" id="dropdown-basic-button" title={displayDropdown}>
+            <Dropdown.Item onClick={this.toggleLight}>Sedentary</Dropdown.Item>
+            <Dropdown.Item onClick={this.toggleLight}>Light Activity</Dropdown.Item>
+            <Dropdown.Item onClick={this.toggleModerate}>Moderate Activity</Dropdown.Item>
+            <Dropdown.Item onClick={this.toggleHigh}>High Activity</Dropdown.Item>
+          </DropdownButton>
+          <span><input placeholder="Body Fat %" name="bodyFat" onChange={(name, event) => this.handleInput(name, event)} />%</span>
+          <button className="QuestionnaireButton" onClick={() => this.submitProfile(this.props.match.params.id, goalToggle, gender, age, weight, height, bodyFat)}>Submit</button>
         </div>
 
     return (
@@ -146,4 +225,6 @@ class Questionnaire extends Component {
   }
 }
 
-export default Questionnaire
+
+
+export default withRouter(Questionnaire)

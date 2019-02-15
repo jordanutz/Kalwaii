@@ -3,7 +3,7 @@
 header {
   max-width: 100vw;
   height: 80px;
-  background: $primary-color;
+  background: linear-gradient(130deg,#41cd8c,#00b698);
   color: $accent-three;
   padding: .5rem;
 
@@ -63,6 +63,7 @@ header {
       button:hover {
         border: 2px solid hsla(0,0%,100%, 1);
         font-weight: bolder;
+        text-decoration: none;
       }
     }
   }

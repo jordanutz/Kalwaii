@@ -8,6 +8,7 @@ const axios = require('axios')
 
 // Controllers
 const auth = require('./auth_controller')
+const profile = require('./profile_controller')
 
 app.use(bodyParser.json())
 app.use( express.static( `${__dirname}/../build` ) )
@@ -93,6 +94,9 @@ app.post('/api/logout', (req, res) => {
   req.session.destroy();
   res.send();
 });
+
+// User creates profile and submits information that will determine their individualized plan.
+app.post('/api/user/profile', profile.createProfile)
 
 massive(process.env.CONNECTION_STRING).then(db => {
   app.set('db', db)

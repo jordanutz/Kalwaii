@@ -10,7 +10,7 @@
 
   .QuestionnaireMain {
     min-width: 450px;
-    height: 400px;
+    height: 450px;
     text-align: center;
     padding: 1rem;
     border-radius: 20px;
@@ -48,16 +48,17 @@
 
         #Increment {
           top: 100px;
-          right: -35px;
+          right: -50px;
         }
 
         #Decrement {
           top: 100px;
-          right: 0;
+          right: -15px;
         }
 
       h1 {
         font-size: 1.5rem;
+        margin-bottom: 1rem;
       }
 
       h1 h2 {
@@ -83,4 +84,17 @@
       }
     }
   }
+}
+
+.btn-primary {
+  border: none;
+  font-weight: 300;
+  color: #141414;
+  margin: 1rem 0;
+  border: 1px solid black;
+}
+
+.dropdown-item:focus, .dropdown-item:hover {
+  background: $secondary-color;
+  color: white;
 }
