@@ -43,6 +43,15 @@ header {
         font-weight: 500;
       }
 
+      span {
+        color: white;
+        font-weight: 300;
+      }
+
+      span:hover {
+        font-weight: 500;
+      }
+
       button {
         border: 2px solid hsla(0,0%,100%,.8);
         border-radius: 20px;

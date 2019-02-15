@@ -1,4 +1,11 @@
 module.exports = {
+  getProfile: (req, res) => {
+    const db = req.app.get('db')
+    db.get_profile()
+    .then(profile => res.status(200).send(profile))
+    .catch(error => console.log('Unable to retrieve profile', error))
+  },
+
   createProfile: (req, res) => {
     console.log(req.body)
     const {id, goal, gender, age, height, weight, physicalLevel, bodyFat} = req.body
@@ -57,5 +64,6 @@ module.exports = {
     leanFactorMultiplier,
     activityCoefficient])
     .then(profile => res.status(200).send(profile))
+    .catch(error => console.log('Unable to create profile', error))
   }
 }

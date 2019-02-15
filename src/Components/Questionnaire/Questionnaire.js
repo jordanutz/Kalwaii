@@ -37,6 +37,8 @@ class Questionnaire extends Component {
     }
   }
 
+
+
     goalToggleHealth = () => {
       this.setState({
         goalToggle: {
@@ -248,6 +250,7 @@ class Questionnaire extends Component {
 }
 
 const mapStateToProps = (state) => {
+  console.log(state)
   return {
     profile: state.profile
   }

@@ -6,6 +6,7 @@ import Diary from '../Diary/Diary'
 import Questionnaire from '../Questionnaire/Questionnaire'
 import Goals from '../Goals/Goals'
 import Dashboard from '../Dashboard/Dashboard'
+import axios from 'axios'
 
 // Redux
 import {connect} from 'react-redux'
@@ -13,9 +14,17 @@ import {getProfile} from '../../redux/reducer'
 
 class Profile extends Component {
 
+  componentDidMount() {
+    axios.get(`/api/user/profile/${this.props.match.params.id}`).then(res => {
+      this.props.getProfile(res.data)
+    })
+  }
+
   render () {
 
-    const displayProfile = this.props.profile ? <Diary /> : <Questionnaire />
+    console.log(this.props.profile)
+
+    const displayProfile = this.props.profile && this.props.profile.length === 0 ? <Questionnaire /> : <Diary />
 
     return (
       <div className="Profile">
@@ -26,11 +35,13 @@ class Profile extends Component {
 }
 
 const mapStateToProps = (state) => {
-  console.log(state)
   return {
     profile: state.profile,
-    user: state.user
   }
 }
 
-export default connect(mapStateToProps)(Profile)
+const mapDispatchToProps = {
+  getProfile
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Profile)

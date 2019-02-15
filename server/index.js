@@ -97,6 +97,7 @@ app.post('/api/logout', (req, res) => {
 
 // User creates profile and submits information that will determine their individualized plan.
 app.post('/api/user/profile', profile.createProfile)
+app.get('/api/user/profile/:id', profile.getProfile)
 
 massive(process.env.CONNECTION_STRING).then(db => {
   app.set('db', db)
