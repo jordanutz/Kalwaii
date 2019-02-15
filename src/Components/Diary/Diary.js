@@ -9,6 +9,7 @@ class Diary extends Component {
   render () {
     return (
       <div className="Diary">
+        <h1>This is your diary</h1>
         <Summary />
         <MealLog />
         <Details />

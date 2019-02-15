@@ -2,7 +2,7 @@
 
 footer {
   max-width: 100vw;
-  background: linear-gradient(130deg,#41cd8c,#00b698);;
+  background: $primary-color;
   height: auto;
   color: white;
 
@@ -13,8 +13,8 @@ footer {
     margin: 0 auto;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    border-bottom: 1px solid #217C38;
-    border-top: 1px solid #217C38;
+    border-bottom: 1px solid #B23939;
+    border-top: 1px solid #B23939;
   }
   ul {
     li {
@@ -56,7 +56,7 @@ footer {
     }
 
     button:hover {
-      background: #B73A3A;
+      background: #35A351;
       transition: 0.3s;
     }
   }

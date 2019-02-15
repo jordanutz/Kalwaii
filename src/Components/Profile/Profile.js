@@ -15,7 +15,7 @@ class Profile extends Component {
 
   render () {
 
-    const displayProfile = this.props.profile && this.props.user ? <Diary /> : <Questionnaire />
+    const displayProfile = this.props.profile ? <Diary /> : <Questionnaire />
 
     return (
       <div className="Profile">
@@ -26,14 +26,11 @@ class Profile extends Component {
 }
 
 const mapStateToProps = (state) => {
+  console.log(state)
   return {
     profile: state.profile,
     user: state.user
   }
 }
 
-const mapDispatchToProps = {
-  getProfile
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Profile)
+export default connect(mapStateToProps)(Profile)

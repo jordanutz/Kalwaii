@@ -3,6 +3,8 @@ import './Questionnaire.scss'
 import axios from 'axios'
 import {withRouter} from 'react-router-dom'
 import {DropdownButton, Dropdown} from 'react-bootstrap'
+import {getProfile} from '../../redux/reducer'
+import {connect} from 'react-redux'
 
 class Questionnaire extends Component {
   constructor () {
@@ -150,65 +152,85 @@ class Questionnaire extends Component {
       })
     }
 
-    submitProfile = (id, goalToggle, gender, age, height, weight, bodyFat) => {
+    submitProfile = (id, goalToggle, gender, age, height, weight, physicalLevel, bodyFat) => {
 
       const userProfile = {
         id: id,
-        goalToggle: goalToggle,
-        gender: gender,
+        goal: Object.keys(goalToggle)[0],
+        gender: Object.keys(gender)[0],
         age: age,
         height: height,
-        weight: weight,
+        weight: weight /= 2.2,
+        physicalLevel: Object.keys(physicalLevel)[0],
         bodyFat: bodyFat
       }
 
       axios.post('/api/user/profile', userProfile).then(res => {
-
+        console.log(res.data)
+        this.props.getProfile(res.data)
       })
     }
 
    render () {
 
-     const {goalToggle, gender, age, height, weight, bodyFat} = this.state
-     console.log(this.state)
+     const {goalToggle,
+       gender,
+       age,
+       height,
+       weight,
+       physicalLevel,
+       bodyFat,
+       toggleQuestionnare} = this.state
 
-     const displayDropdown = this.state.physicalLevel.sedentary && "Sedentary Activity" ||
-       this.state.physicalLevel.light && "Light Activity" ||
-       this.state.physicalLevel.moderate && "Moderate Activity" ||
-       this.state.physicalLevel.high && "High Activity" || "Physical Activity Level"
+     const {goalToggleWeight,
+       goalToggleHealth,
+       goalToggleStrong,
+       goalToggleFemale,
+       goalToggleMale,
+       handleInput,
+       toggleLight,
+       toggleSedentary,
+       toggleModerate,
+       toggleHigh,
+       submitProfile} = this
 
-     const displayGoals = this.state.toggleQuestionnare.goals &&
-       <div className="QuestionnaireSelection" value={this.state.toggleQuestionnare.goals}>
+     const displayDropdown = physicalLevel.sedentary && "Sedentary Activity" ||
+       physicalLevel.light && "Light Activity" ||
+       physicalLevel.moderate && "Moderate Activity" ||
+       physicalLevel.high && "High Activity" || "Physical Activity Level"
+
+     const displayGoals = toggleQuestionnare.goals &&
+       <div className="QuestionnaireSelection" value={toggleQuestionnare.goals}>
          <h1>Let's set up your profile.</h1>
          <h2>How can we help you?</h2>
-         <button className="QuestionnaireButton" onClick={this.goalToggleHealth}><h4>Be Healthier</h4><p>Eat well, train well, live well.</p></button>
-         <button className="QuestionnaireButton" onClick={this.goalToggleWeight}><h4>Lose Weight</h4><p>Get lean without getting mean.</p></button>
-         <button className="QuestionnaireButton" onClick={this.goalToggleStrong}><h4>Get Stronger</h4><p>Bulk up the sensible way.</p></button>
+         <button className="QuestionnaireButton" onClick={goalToggleHealth}><h4>Be Healthier</h4><p>Eat well, train well, live well.</p></button>
+         <button className="QuestionnaireButton" onClick={goalToggleWeight}><h4>Lose Weight</h4><p>Get lean without getting mean.</p></button>
+         <button className="QuestionnaireButton" onClick={goalToggleStrong}><h4>Get Stronger</h4><p>Bulk up the sensible way.</p></button>
        </div>
 
-      const displayAge = this.state.toggleQuestionnare.age &&
-        <div className="QuestionnaireSelection" value={this.state.toggleQuestionnare.age}>
+      const displayAge = toggleQuestionnare.age &&
+        <div className="QuestionnaireSelection" value={toggleQuestionnare.age}>
           <h1>Alright!</h1>
           <h2>Let's get some basics down first.</h2>
-          <button className="QuestionnaireButton" onClick={this.goalToggleFemale}>Female</button>
-          <button className="QuestionnaireButton" onClick={this.goalToggleMale}>Male</button>
+          <button className="QuestionnaireButton" onClick={goalToggleFemale}>Female</button>
+          <button className="QuestionnaireButton" onClick={goalToggleMale}>Male</button>
         </div>
 
-      const displayDetails = this.state.toggleQuestionnare.details &&
-        <div className="QuestionnaireSelection" value={this.state.toggleQuestionnare.details}>
+      const displayDetails = toggleQuestionnare.details &&
+        <div className="QuestionnaireSelection" value={toggleQuestionnare.details}>
           <h1>Physical Details</h1>
-          <input placeholder="Your age" name="age" onChange={(name, event) => this.handleInput(name, event)}/>
-          <input placeholder="Your height (in)" name="height" onChange={(name, event) => this.handleInput(name, event)}/>
+          <input placeholder="Your age" name="age" onChange={(name, event) => handleInput(name, event)}/>
+          <input placeholder="Your height (in)" name="height" onChange={(name, event) => handleInput(name, event)}/>
           <button id="Decrement" className="HeightSelection">-</button><button id="Increment" className="HeightSelection">+</button>
-          <input placeholder="Your weight (lbs)" name="weight" onChange={(name, event) => this.handleInput(name, event)} />
+          <input placeholder="Your weight (lbs)" name="weight" onChange={(name, event) => handleInput(name, event)} />
           <DropdownButton variant="light" id="dropdown-basic-button" title={displayDropdown}>
-            <Dropdown.Item onClick={this.toggleLight}>Sedentary</Dropdown.Item>
-            <Dropdown.Item onClick={this.toggleLight}>Light Activity</Dropdown.Item>
-            <Dropdown.Item onClick={this.toggleModerate}>Moderate Activity</Dropdown.Item>
-            <Dropdown.Item onClick={this.toggleHigh}>High Activity</Dropdown.Item>
+            <Dropdown.Item onClick={toggleSedentary}>Sedentary</Dropdown.Item>
+            <Dropdown.Item onClick={toggleLight}>Light Activity</Dropdown.Item>
+            <Dropdown.Item onClick={toggleModerate}>Moderate Activity</Dropdown.Item>
+            <Dropdown.Item onClick={toggleHigh}>High Activity</Dropdown.Item>
           </DropdownButton>
-          <span><input placeholder="Body Fat %" name="bodyFat" onChange={(name, event) => this.handleInput(name, event)} />%</span>
-          <button className="QuestionnaireButton" onClick={() => this.submitProfile(this.props.match.params.id, goalToggle, gender, age, weight, height, bodyFat)}>Submit</button>
+          <span><input placeholder="Body Fat %" name="bodyFat" onChange={(name, event) => handleInput(name, event)} />%</span>
+          <button className="QuestionnaireButton" onClick={() => submitProfile(this.props.match.params.id, goalToggle, gender, age, height, weight, physicalLevel, bodyFat)}>Submit</button>
         </div>
 
     return (
@@ -225,6 +247,15 @@ class Questionnaire extends Component {
   }
 }
 
+const mapStateToProps = (state) => {
+  return {
+    profile: state.profile
+  }
+}
+
+const mapDispatchToProps = {
+  getProfile
+}
 
 
-export default withRouter(Questionnaire)
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Questionnaire))
