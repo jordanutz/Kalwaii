@@ -2,9 +2,9 @@
 
 footer {
   max-width: 100vw;
-  background: $primary-color;
+  background: $accent-three;
   height: auto;
-  color: white;
+  color: $accent-four;
 
   .FooterContainer {
     max-width: 70%;
@@ -13,10 +13,11 @@ footer {
     margin: 0 auto;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    border-bottom: 1px solid #B23939;
-    border-top: 1px solid #B23939;
+    border-bottom: 1px solid $secondary-color;
+    border-top: 1px solid $secondary-color;
   }
   ul {
+
     li {
       list-style: none;
       font-weight: 300;
@@ -56,7 +57,7 @@ footer {
     }
 
     button:hover {
-      background: #35A351;
+      background: #6275BC;
       transition: 0.3s;
     }
   }

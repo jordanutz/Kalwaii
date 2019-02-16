@@ -2,8 +2,8 @@
 
 .Homepage {
   max-width: 100vw;
-  height: auto;
-  background: $primary-color;
+  min-height: auto;
+  background: $accent-three;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -13,10 +13,11 @@
 
   .HomepageHeader {
     width: 80%;
-    min-height: 90vh;
+    height: auto;
     z-index: 10;
     display: flex;
     flex-direction: column;
+    padding-bottom: 8rem;
 
     .HomepageCarousel {
       max-width: 45%;
@@ -33,14 +34,14 @@
 
       h3 {
         font-weight: 500;
-        color: $accent-three;
+        color: $accent-four;
         margin-bottom: 1rem;
         margin-bottom: 1rem;
       }
 
       h4 {
         font-size: .85rem;
-        color: $accent-three;
+        color: $accent-four;
         font-weight: 300;
       }
 
@@ -50,7 +51,7 @@
     }
 
     h1 {
-      color: $accent-three;
+      color: $accent-four;
       width: 100%;
       height: auto;
       padding: 3rem 5rem 1rem 8rem;
@@ -61,7 +62,7 @@
     p {
       padding: 0rem 5rem 1rem 8rem;
       max-width: 600px;
-      color: $accent-three;
+      color: $accent-four;
       font-size: .85rem;
       font-weight: 300;
     }
@@ -70,7 +71,7 @@
       padding: 1rem 5rem 1rem 8rem;
       font-size: 2rem;
       font-weight: 700;
-      color: $accent-three;
+      color: $accent-four;
 
     }
   }
@@ -153,7 +154,7 @@
   min-width: 95%;
   position: absolute;
   height: 30px;
-  background: #B23939;
+  background: $secondary-color;
   border-radius: 20px;
   bottom: 0;
 }
@@ -166,6 +167,10 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.carousel-indicators li {
+  background: $accent-one;
 }
 
 @keyframes slide {

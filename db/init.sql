@@ -20,13 +20,14 @@ create table diet_users (
 create table diet_profile (
     id serial primary key,
     user_id integer references diet_users(id),
+    goal text not null
     gender text not null,
     age integer not null,
     height integer not null,
     weight decimal not null,
     physical_level text not null,
     body_fat int not null,
-    gender_multiplier int not null
+    gender_multiplier int not null,
     lean_factor_multiplier int not null,
     activity_coefficient int not null
 )

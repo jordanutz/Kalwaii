@@ -15,6 +15,10 @@ import {getProfile} from '../../redux/reducer'
 class Profile extends Component {
 
   componentDidMount() {
+    this.getProfile()
+  }
+
+  getProfile = () => {
     axios.get(`/api/user/profile/${this.props.match.params.id}`).then(res => {
       this.props.getProfile(res.data)
     })
@@ -24,11 +28,13 @@ class Profile extends Component {
 
     console.log(this.props.profile)
 
-    const displayProfile = this.props.profile && this.props.profile.length === 0 ? <Questionnaire /> : <Diary />
+    const displayQuestionnaire = this.props.profile && this.props.profile.length === 0 ? <Questionnaire /> : null
+    const displayDiary = this.props.profile && this.props.profile.length >= 1 ? <Diary /> : null
 
     return (
       <div className="Profile">
-        {displayProfile}
+        {displayQuestionnaire}
+        {displayDiary}
       </div>
     )
   }

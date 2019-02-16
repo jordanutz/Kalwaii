@@ -1,7 +1,7 @@
 module.exports = {
   getProfile: (req, res) => {
     const db = req.app.get('db')
-    db.get_profile()
+    db.get_profile(req.params.id)
     .then(profile => res.status(200).send(profile))
     .catch(error => console.log('Unable to retrieve profile', error))
   },

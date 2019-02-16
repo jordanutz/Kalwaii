@@ -6,6 +6,8 @@ import {DropdownButton, Dropdown} from 'react-bootstrap'
 import {getProfile} from '../../redux/reducer'
 import {connect} from 'react-redux'
 
+import Sushi from './assets/sushi.svg'
+
 class Questionnaire extends Component {
   constructor () {
     super()
@@ -36,8 +38,6 @@ class Questionnaire extends Component {
       }
     }
   }
-
-
 
     goalToggleHealth = () => {
       this.setState({
@@ -166,7 +166,6 @@ class Questionnaire extends Component {
         physicalLevel: Object.keys(physicalLevel)[0],
         bodyFat: bodyFat
       }
-
       axios.post('/api/user/profile', userProfile).then(res => {
         console.log(res.data)
         this.props.getProfile(res.data)
@@ -237,6 +236,7 @@ class Questionnaire extends Component {
 
     return (
       <div className="Questionnaire">
+        <img id="Sushi" src={Sushi} />
         <div className="QuestionnaireMain">
           <div className="QuestionnaireSelection">
             {displayGoals}
