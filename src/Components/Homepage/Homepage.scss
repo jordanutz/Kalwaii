@@ -171,6 +171,9 @@
 
 .carousel-indicators li {
   background: $accent-one;
+  border-radius: 50px;
+  width: 20px;
+  height: 1px;
 }
 
 @keyframes slide {

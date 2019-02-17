@@ -72,8 +72,9 @@ header {
       }
 
       button:hover {
-        font-weight: bolder;
+        font-weight: 500;
         text-decoration: none;
+        color: $secondary-color;
       }
     }
   }

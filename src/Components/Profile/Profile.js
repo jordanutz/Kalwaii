@@ -29,7 +29,7 @@ class Profile extends Component {
     console.log(this.props.profile)
 
     const displayQuestionnaire = this.props.profile && this.props.profile.length === 0 ? <Questionnaire /> : null
-    const displayDiary = this.props.profile && this.props.profile.length >= 1 ? <Diary /> : null
+    const displayDiary = this.props.profile && this.props.profile.length >= 1 ? <Diary/> : null
 
     return (
       <div className="Profile">

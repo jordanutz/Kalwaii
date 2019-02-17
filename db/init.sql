@@ -20,7 +20,7 @@ create table diet_users (
 create table diet_profile (
     id serial primary key,
     user_id integer references diet_users(id),
-    goal text not null
+    goal text not null,
     gender text not null,
     age integer not null,
     height integer not null,
