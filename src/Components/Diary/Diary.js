@@ -13,6 +13,8 @@ import Lunch from './assets/lunch.svg'
 import Dinner from './assets/dinner.svg'
 import Add from './assets/add.svg'
 
+import Calendar from 'react-calendar'
+
 class Diary extends Component {
 
   render () {
@@ -29,8 +31,8 @@ class Diary extends Component {
         <div className="DiaryUser">
           <div className="UserInformation">
             <img src={this.props.profile[0].photo} />
-            <h1> {this.props.profile[0].username}</h1>
-            <h2>Date: Calendar</h2>
+            <h1> Welcome back, {this.props.profile[0].username}!</h1>
+            <Calendar />
           </div>
           <div className="DiaryMealLog">
             <div className="MealLog">
