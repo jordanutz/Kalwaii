@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import './Diary.scss'
+import axios from 'axios'
 
 import Summary from '../Summary/Summary'
 import MealLog from '../MealLog/MealLog'
@@ -16,8 +17,29 @@ import Add from './assets/add.svg'
 import Calendar from 'react-calendar'
 
 class Diary extends Component {
+  constructor () {
+    super()
+    this.state = {
+      nutrition: {}
+    }
+  }
+
+  componentDidMount() {
+    this.getCaloricExpenditure()
+  }
+
+  getCaloricExpenditure = () => {
+    axios.get(`/api/user/summary/${this.props.profile[0].user_id}`).then(res => {
+      this.setState({
+        nutrition: res.data
+      })
+    })
+  }
+
 
   render () {
+
+    console.log(this.state.nutrition)
 
     // <Summary />
     // <MealLog />
@@ -26,12 +48,29 @@ class Diary extends Component {
     return (
       <main>
         <div className="DiaryHealth">
-            <h2>Caloric Breakdown</h2>
+          <div className="DiaryCalories">
+            <h1>{this.state.nutrition.calories}</h1>
+          </div>
         </div>
         <div className="DiaryUser">
           <div className="UserInformation">
             <img src={this.props.profile[0].photo} />
             <h1> Welcome back, {this.props.profile[0].username}!</h1>
+            <h2>Your Dietary Goals</h2>
+              <div className="DiaryMacronutrients">
+                <div className="Macronutrient">
+                  <h3>Carbohydrates</h3>
+                  <h4>{this.state.nutrition.carbohydratesMin}g - {this.state.nutrition.carbohydratesMax}g</h4>
+                </div>
+                <div className="Macronutrient">
+                  <h3>Fat</h3>
+                  <h4>{this.state.nutrition.fatMin}g - {this.state.nutrition.fatMax}g</h4>
+                </div>
+                <div className="Macronutrient">
+                  <h3>Protein</h3>
+                  <h4>{this.state.nutrition.proteinMin}g - {this.state.nutrition.proteinMax}g</h4>
+                </div>
+              </div>
             <Calendar />
           </div>
           <div className="DiaryMealLog">
