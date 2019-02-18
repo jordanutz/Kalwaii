@@ -15,17 +15,30 @@ import Dinner from './assets/dinner.svg'
 import Add from './assets/add.svg'
 
 import Calendar from 'react-calendar'
+import CalendarIcon from './assets/calendar.svg'
 
 class Diary extends Component {
   constructor () {
     super()
     this.state = {
-      nutrition: {}
+      nutrition: {},
+      date: new Date(),
+      toggleCalendar: false
     }
   }
 
   componentDidMount() {
     this.getCaloricExpenditure()
+  }
+
+  handleDate = (date) => {
+    // var curr_date = date.getDate();
+    // var curr_month = date.getMonth() + 1; //Months are zero based
+    // var curr_year = date.getFullYear()
+    this.setState({
+      date: date,
+      toggleCalendar: false
+    })
   }
 
   getCaloricExpenditure = () => {
@@ -36,11 +49,31 @@ class Diary extends Component {
     })
   }
 
+  toggleCalendar = () => {
+    this.setState({
+      toggleCalendar: !this.state.toggleCalendar
+    })
+  }
+
 
   render () {
 
-    console.log(this.state.nutrition)
+    console.log(this.state.date)
 
+    const curr_date = this.state.date.getDate();
+    const curr_month = this.state.date.getMonth() + 1; //Months are zero based
+    const curr_year = this.state.date.getFullYear()
+    const displayDate = curr_month + "/" + curr_date + "/" + curr_year
+    const displayCalendar = this.state.toggleCalendar &&
+      <div className="Calendar">
+        <Calendar
+        onChange={this.handleDate}
+        value={this.state.date}
+        prev2Label={false}
+        prev2Label={false}
+        next2Label={false}
+        />
+      </div>
     // <Summary />
     // <MealLog />
     // <Details />
@@ -56,7 +89,11 @@ class Diary extends Component {
           <div className="UserInformation">
             <img src={this.props.profile[0].photo} />
             <h1> Welcome back, {this.props.profile[0].username}!</h1>
-            <h2>Your Dietary Goals</h2>
+              <div className="DiaryCalendar">
+                <img src={CalendarIcon} />
+                <h2 onClick={this.toggleCalendar}>{displayDate}</h2>
+              </div>
+              {displayCalendar}
               <div className="DiaryMacronutrients">
                 <div className="Macronutrient">
                   <h3>Carbohydrates</h3>
@@ -71,7 +108,6 @@ class Diary extends Component {
                   <h4>{this.state.nutrition.proteinMin}g - {this.state.nutrition.proteinMax}g</h4>
                 </div>
               </div>
-            <Calendar />
           </div>
           <div className="DiaryMealLog">
             <div className="MealLog">

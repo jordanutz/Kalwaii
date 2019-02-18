@@ -32,9 +32,9 @@ create table diet_profile (
     weight decimal not null,
     physical_level text not null,
     body_fat int not null,
-    gender_multiplier int not null,
-    lean_factor_multiplier int not null,
-    activity_coefficient int not null
+    gender_multiplier decimal not null,
+    lean_factor_multiplier decimal not null,
+    activity_coefficient decimal not null
 )
 
 create table user_records (
