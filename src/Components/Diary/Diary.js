@@ -3,9 +3,7 @@ import './Diary.scss'
 import axios from 'axios'
 
 // Child Components
-import Summary from '../Summary/Summary'
 import MealLog from '../MealLog/MealLog'
-import Details from '../Details/Details'
 
 // Redux
 import {connect} from 'react-redux'
@@ -62,7 +60,6 @@ class Diary extends Component {
         onChange={this.handleDate}
         value={this.state.date}
         prev2Label={false}
-        prev2Label={false}
         next2Label={false}
         />
     </div>
@@ -90,16 +87,16 @@ class Diary extends Component {
         </div>
         <div className="DiaryUser">
           <div className="UserInformation">
-            <img id="border" src={this.props.profile[0].photo} />
+            <img id="border" src={this.props.profile[0].photo} alt="User Icon"/>
             <h1> Welcome back, {this.props.profile[0].username}!</h1>
               <div className="DiaryCalendar">
-                <img src={CalendarIcon} />
+                <img src={CalendarIcon} alt="Calendar"/>
                 <h2 onClick={this.toggleCalendar}>{displayDate}</h2>
               </div>
               {displayCalendar}
           </div>
           <div className="DiaryMealLog">
-            <MealLog date={this.state.date}/>
+            <MealLog date={this.state.date} displayDate={displayDate}/>
           </div>
         </div>
       </main>

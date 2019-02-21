@@ -167,7 +167,6 @@ class Questionnaire extends Component {
         bodyFat: bodyFat
       }
       axios.post('/api/user/profile', userProfile).then(res => {
-        console.log(res.data)
         this.props.getProfile(res.data)
       })
     }
@@ -195,10 +194,10 @@ class Questionnaire extends Component {
        toggleHigh,
        submitProfile} = this
 
-     const displayDropdown = physicalLevel.sedentary && "Sedentary Activity" ||
-       physicalLevel.light && "Light Activity" ||
-       physicalLevel.moderate && "Moderate Activity" ||
-       physicalLevel.high && "High Activity" || "Physical Activity Level"
+     const displayDropdown = physicalLevel.sedentary ? "Sedentary Activity" : null ||
+       physicalLevel.light ? "Light Activity" : null ||
+       physicalLevel.moderate ? "Moderate Activity" : null ||
+       physicalLevel.high ? "High Activity" : null || "Physical Activity Level"
 
      const displayGoals = toggleQuestionnare.goals &&
        <div className="QuestionnaireSelection" value={toggleQuestionnare.goals}>
@@ -236,7 +235,7 @@ class Questionnaire extends Component {
 
     return (
       <div className="Questionnaire">
-        <img id="Sushi" src={Sushi} />
+        <img id="Sushi" src={Sushi} alt="Sushi Icon" />
         <div className="QuestionnaireMain">
           <div className="QuestionnaireSelection">
             {displayGoals}

@@ -4,8 +4,6 @@ import './Profile.scss'
 // Components
 import Diary from '../Diary/Diary'
 import Questionnaire from '../Questionnaire/Questionnaire'
-import Goals from '../Goals/Goals'
-import Dashboard from '../Dashboard/Dashboard'
 import axios from 'axios'
 
 // Redux

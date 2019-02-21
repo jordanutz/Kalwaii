@@ -19,5 +19,12 @@ module.exports = {
     db.insert_food([userId, mealId, foodId, date, quantity])
     .then(entry => console.log(entry))
     .catch(error => console.log('Unexpected error posting log', error))
+  },
+  getSelectedFoods: (req, res) => {
+    const db = req.app.get('db')
+    const {user, meal, date} = req.query
+    db.get_selected_food([user, meal, date])
+    .then(food => res.status(200).send(food))
+    .catch(error => console.log('Unexpected error retrieving selected foods', error))
   }
 }

@@ -106,6 +106,7 @@ app.get('/api/meal-logs', mealLog.getMealLog)
 app.get('/api/search', food.getResults)
 app.get('/api/foodlog/food/:id', food.getFood)
 app.post('/api/foodlog', food.postFood)
+app.get('/api/selected', food.getSelectedFoods)
 
 
 massive(process.env.CONNECTION_STRING).then(db => {

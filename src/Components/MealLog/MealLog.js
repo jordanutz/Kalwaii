@@ -41,10 +41,10 @@ class MealLog extends Component {
 
       const displayMealLog = mealLog.map(log => {
 
-      const BreakfastIcon = log.meal === 'Breakfast' && <img src={Breakfast} />
-      const LunchIcon = log.meal === 'Lunch' && <img src={Lunch} />
-      const DinnerIcon = log.meal === 'Dinner' && <img src={Dinner} />
-      const SnackIcon = log.meal === 'Snack' && <img src={Snack} />
+      const BreakfastIcon = log.meal === 'Breakfast' && <img src={Breakfast} alt="Breakfast"/>
+    const LunchIcon = log.meal === 'Lunch' && <img src={Lunch} alt="Lunch" />
+  const DinnerIcon = log.meal === 'Dinner' && <img src={Dinner} alt="Dinner"/>
+const SnackIcon = log.meal === 'Snack' && <img src={Snack} alt="Snack" />
 
       return (
         <div className="IndividualMealLog" key={log.id}>
@@ -61,9 +61,10 @@ class MealLog extends Component {
           <Link to={{
               pathname: `/profile/${this.props.profile[0].user_id}/foodlog/${log.id}`,
               state: {
-                date: this.props.date
+                date: this.props.date,
+                displayDate: this.props.displayDate
               }
-            }}><img id="Add" src={Add} /></Link>
+            }}><img id="Add" src={Add} alt="Add Food"/></Link>
         </div>
       )
     })

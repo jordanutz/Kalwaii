@@ -28,20 +28,31 @@ class FoodProfile extends Component {
   }
 
   submitLog = (userId, mealId, foodId, date, quantity) => {
+
+    const month = date.toLocaleString('en-us', { month: 'short' });
+    const day = date.getDate()
+    const year = date.getFullYear()
+
+    const formattedDate = month + ' ' + day + ' ' + year
+
     const logDetails = {
       userId: userId,
       mealId: parseInt(mealId),
       foodId: foodId,
-      date: date,
+      date: formattedDate.toString(),
       quantity: quantity
     }
     axios.post('/api/foodlog', logDetails).then(res => {
       console.log(res.data)
     })
+    this.goBack()
+  }
+
+  goBack = () => {
+    this.props.history.goBack()
   }
 
   render () {
-
     console.log(this.props)
 
     const {food} = this.state
@@ -69,7 +80,11 @@ class FoodProfile extends Component {
                 <NumericInput min={1} value={this.state.quantity} onChange={this.inputQuantity}/>
                 <h4>{food.preparation}</h4>
               </div>
-              <button onClick={() => this.submitLog(this.props.user.id, this.props.location.state.meal, food.id, this.props.location.state.date, this.state.quantity)}>Add To Diary</button>
+              <button onClick={() => this.submitLog(this.props.user.id,
+                  this.props.location.state.meal,
+                  food.id,
+                  this.props.location.state.date,
+                  this.state.quantity)}>Add To Diary</button>
             </div>
           </div>
         </div>
