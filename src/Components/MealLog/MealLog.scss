@@ -1,0 +1,48 @@
+@import '../../index';
+
+  .IndividualMealLog {
+    background: white;
+    width: 375px;
+    height: 90px;
+    padding: .75rem;
+    margin: .5rem 0;
+    box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.12), 0px 4px 5px 0px rgba(0, 0, 0, 0.12), 0px 1px 10px 0px rgba(0, 0, 0, 0.2);
+    display: flex;
+    font-size: .85rem;
+    position: relative;
+
+    img {
+      width: 150px;
+      height: 150px;
+      margin-bottom: .5rem;
+    }
+
+    h2 {
+      font-weight: bolder;
+    }
+
+    .MealLogImage {
+      display: flex;
+      margin-right: .75rem;
+
+      img {
+        width: 70px;
+        height: 70px;
+      }
+    }
+
+    .MealLogDetails {
+      display: flex;
+      flex-direction: column;
+
+      h3 {
+        font-size: .75rem;
+      }
+    }
+    #Add {
+      width: 30px;
+      height: 30px;
+      position: absolute;
+      right: 20px;
+    }
+  }

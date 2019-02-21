@@ -26,7 +26,6 @@ class Profile extends Component {
 
   render () {
 
-    console.log(this.props.profile)
 
     const displayQuestionnaire = this.props.profile && this.props.profile.length === 0 ? <Questionnaire /> : null
     const displayDiary = this.props.profile && this.props.profile.length >= 1 ? <Diary/> : null

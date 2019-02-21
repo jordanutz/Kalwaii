@@ -1,4 +1,4 @@
-insert into diet_profile
+INSERT INTO diet_profile
   (user_id,
     goal,
     gender,
@@ -10,6 +10,6 @@ insert into diet_profile
     gender_multiplier,
     lean_factor_multiplier,
     activity_coefficient)
-    values
+    VALUES
     ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11)
     returning*;

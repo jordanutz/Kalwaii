@@ -10,6 +10,8 @@ const axios = require('axios')
 const auth = require('./controllers/auth_controller')
 const profile = require('./controllers/profile_controller')
 const summary = require('./controllers/summary_controller')
+const mealLog = require('./controllers/meallog_controller')
+const food = require('./controllers/food_controller')
 
 app.use(bodyParser.json())
 app.use( express.static( `${__dirname}/../build` ) )
@@ -100,6 +102,11 @@ app.post('/api/logout', (req, res) => {
 app.post('/api/user/profile', profile.createProfile)
 app.get('/api/user/profile/:id', profile.getProfile)
 app.get('/api/user/summary/:id', summary.getSummary)
+app.get('/api/meal-logs', mealLog.getMealLog)
+app.get('/api/search', food.getResults)
+app.get('/api/foodlog/food/:id', food.getFood)
+app.post('/api/foodlog', food.postFood)
+
 
 massive(process.env.CONNECTION_STRING).then(db => {
   app.set('db', db)
