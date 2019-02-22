@@ -28,17 +28,6 @@ class Diary extends Component {
     this.getCaloricExpenditure()
   }
 
-  componentDidUpdate = (prevState, prevProps) => {
-    // console.log(prevProps)
-    // console.log(prevState)
-    // console.log(this.state)
-    if (prevProps.nutrition.calories !== this.state.nutrition.calories && prevState.profile[0].goal !== this.props.profile[0].goal) {
-      console.log('hit component did yeet')
-      // this.props.retrieveProfile()
-      // this.getCaloricExpenditure()
-    }
-  }
-
   handleDate = (date) => {
     this.setState({
       date: date,
