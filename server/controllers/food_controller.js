@@ -24,7 +24,25 @@ module.exports = {
     const db = req.app.get('db')
     const {user, meal, date} = req.query
     db.get_selected_food([user, meal, date])
-    .then(food => res.status(200).send(food))
+    .then(foods => {
+
+      const totalCalories = foods.reduce( (total, food) => {
+        return total + (food.calories * food.quantity)
+      }, 0);
+
+      const selectedFoods = {
+        totalCalories: totalCalories,
+        foods: foods
+      }
+
+      console.log(selectedFoods)
+
+      res.status(200).send(selectedFoods)
+    })
+
+
+
+
     .catch(error => console.log('Unexpected error retrieving selected foods', error))
   }
 }

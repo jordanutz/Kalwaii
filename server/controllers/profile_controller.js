@@ -7,7 +7,6 @@ module.exports = {
   },
 
   createProfile: (req, res) => {
-    console.log(req.body)
     const {id, goal, gender, age, height, weight, physicalLevel, bodyFat} = req.body
     const db = req.app.get('db')
     let genderMultiplier;

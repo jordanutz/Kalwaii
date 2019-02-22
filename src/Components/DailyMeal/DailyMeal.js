@@ -12,7 +12,8 @@ class DailyMeal extends Component {
     this.state = {
       search: [],
       searchInput: '',
-      selected: []
+      selected: null,
+      totalCalories: null
     }
   }
 
@@ -27,7 +28,8 @@ class DailyMeal extends Component {
     axios.get(`/api/selected?user=${this.props.user.id}&meal=${this.props.match.params.id}&date=${formattedDate}`)
     .then(res => {
       this.setState({
-        selected: res.data
+        selected: res.data.foods,
+        totalCalories: res.data.totalCalories
       })
     })
   }
@@ -49,8 +51,8 @@ class DailyMeal extends Component {
     })
   }
 
-  deleteSelection = (index) => {
-    console.log(index)
+  deleteSelection = (id) => {
+    console.log(id)
   }
 
   render () {
@@ -61,41 +63,41 @@ class DailyMeal extends Component {
 
     const displayResults = this.state.search.map(result => {
       return (
-          <Link to={{
+          <Link
+            key={result.id}
+            to={{
               pathname: `/food/${result.id}`,
               state: {
                 meal: this.props.match.params.id,
                 date: this.props.location.state.date
               }
             }} style={{ textDecoration: 'none', color: 'black' }}>
-              <div className="SearchResult" key={result.id}>
-          <div className="SearchDetails">
-            <h1>{result.name}</h1>
-            <h2>Calories: {result.calories}</h2>
-          </div>
-          <div className="SearchSelection">
-            <button>Add</button>
-          </div>
-          </div>
-          </Link>
-      )
+            <div className="SearchResult" key={result.id}>
+              <div className="SearchDetails">
+                <h1>{result.name}</h1>
+                <h2>Calories: {result.calories}</h2>
+              </div>
+              <div className="SearchSelection">
+                <button>Add</button>
+              </div>
+            </div>
+        </Link>
+        )
     })
 
-    const displaySelected = this.state.selected.map( (selection, index) => {
+    const displaySelected = this.state.selected && this.state.selected.map( (selection, index) => {
+      console.log(selection.id)
       return (
         <div className="SelectedFood" key={index}>
           <h1>{selection.name}</h1>
-          <h2>{selection.calories} Calories</h2>
+          <h2>{selection.calories * selection.quantity} Calories</h2>
           <h2>{selection.quantity}, {selection.preparation}</h2>
-          <button onClick={() => this.deleteSelection(index)}>Delete</button>
+          <button onClick={() => this.deleteSelection(selection.id)}>Delete</button>
         </div>
       )
     })
 
-
-
     const displaySearch = this.state.search.length === 0 ? <h1>Search Results</h1> : <h3>{this.state.search.length + ' '} of 40 Results</h3>
-
 
     return (
         <div className="DailyMeal">
@@ -105,7 +107,7 @@ class DailyMeal extends Component {
               {lunchHeader}
               {dinnerHeader}
               {snackHeader}
-              {this.props.location.state.displayDate}
+              <h2>{this.props.location.state.displayDate}</h2>
             </div>
             <div className="DailyMealMain">
 
@@ -115,7 +117,7 @@ class DailyMeal extends Component {
               </div>
 
               <div className="DailyMealSubheader">
-                <h1>Total Calories: </h1>
+                <h1>Total Calories: {this.state.totalCalories} </h1>
                 <h2>Recommended Calories:</h2>
               </div>
 

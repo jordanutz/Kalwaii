@@ -7,6 +7,7 @@ import MealLog from '../MealLog/MealLog'
 
 // Redux
 import {connect} from 'react-redux'
+import {getProfile} from '../../redux/reducer'
 
 // React-Calendar
 import Calendar from 'react-calendar'
@@ -18,12 +19,24 @@ class Diary extends Component {
     this.state = {
       nutrition: {},
       date: new Date(),
-      toggleCalendar: false
+      toggleCalendar: false,
+      toggleGoal: false
     }
   }
 
   componentDidMount() {
     this.getCaloricExpenditure()
+  }
+
+  componentDidUpdate = (prevState, prevProps) => {
+    // console.log(prevProps)
+    // console.log(prevState)
+    // console.log(this.state)
+    if (prevProps.nutrition.calories !== this.state.nutrition.calories && prevState.profile[0].goal !== this.props.profile[0].goal) {
+      console.log('hit component did yeet')
+      // this.props.retrieveProfile()
+      // this.getCaloricExpenditure()
+    }
   }
 
   handleDate = (date) => {
@@ -47,6 +60,24 @@ class Diary extends Component {
     })
   }
 
+  handleToggleGoal = () => {
+    this.setState({
+      toggleGoal: !this.state.toggleGoal
+    })
+  }
+
+  editGoal = (id, event) => {
+    const userGoal = {
+      goal: event.target.name
+    }
+    axios.put(`/api/summary/${id}`, userGoal).then(res => {
+      this.props.getProfile(res.data)
+      this.getCaloricExpenditure()
+    })
+    this.setState({
+      toggleGoal: false
+    })
+  }
 
   render () {
 
@@ -63,6 +94,18 @@ class Diary extends Component {
         next2Label={false}
         />
     </div>
+
+
+    const displayGoal = this.props.profile[0].goal === 'health' ? 'Be Healthy' : null ||
+      this.props.profile[0].goal === 'stronger' ? 'Get Stronger' : null ||
+      this.props.profile[0].goal === 'weight' ? 'Lose Weight' : null
+
+    const displayEditGoal = this.state.toggleGoal &&
+        <div className="EditGoal">
+          <button name='health' onClick={(event) => this.editGoal(this.props.profile[0].user_id, event)}>Be Healthy</button>
+          <button name='weight' onClick={(event) => this.editGoal(this.props.profile[0].user_id, event)}>Lose Weight</button>
+          <button name='stronger' onClick={(event) => this.editGoal(this.props.profile[0].user_id, event)}>Get Stronger</button>
+        </div>
 
     return (
       <main>
@@ -89,6 +132,8 @@ class Diary extends Component {
           <div className="UserInformation">
             <img id="border" src={this.props.profile[0].photo} alt="User Icon"/>
             <h1> Welcome back, {this.props.profile[0].username}!</h1>
+            <h2 onClick={this.handleToggleGoal}>Goal: {displayGoal}</h2>
+            {displayEditGoal}
               <div className="DiaryCalendar">
                 <img src={CalendarIcon} alt="Calendar"/>
                 <h2 onClick={this.toggleCalendar}>{displayDate}</h2>
@@ -110,5 +155,9 @@ const mapStateToProps = (state) => {
   }
 }
 
+const mapDispatchToProps = {
+  getProfile
+}
 
-export default connect(mapStateToProps)(Diary)
+
+export default connect(mapStateToProps, mapDispatchToProps)(Diary)

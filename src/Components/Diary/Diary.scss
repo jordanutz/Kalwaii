@@ -70,6 +70,24 @@ main {
     padding: 1rem;
     border-right: 1px solid $accent-one;
     align-items: center;
+    position: relative;
+
+    .EditGoal {
+      width: 80%;
+      min-height: 25%;
+      display: flex;
+      position: absolute;
+      background: white;
+      bottom: 120px;
+      box-shadow: 0px 2px 4px -1px rgba(0, 20px, 0, 0.1), 0px 4px 30px 0px rgba(0, 0, 0, 0.1), 0px 1px 20px 0px rgba(0, 0, 0, 0.2);
+
+      button {
+        width: 100%;
+        background: $accent-one;
+        color: white;
+        font-weight: bolder;
+      }
+    }
 
     #border {
       border-radius: 50%;
