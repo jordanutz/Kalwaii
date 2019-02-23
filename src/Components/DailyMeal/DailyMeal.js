@@ -52,10 +52,25 @@ class DailyMeal extends Component {
   }
 
   deleteSelection = (id) => {
-    console.log(id)
+
+    const month = this.props.location.state.date.toLocaleString('en-us', { month: 'short' });
+    const day = this.props.location.state.date.getDate()
+    const year = this.props.location.state.date.getFullYear()
+
+    const formattedDate = month + ' ' + day + ' ' + year
+
+    axios.delete(`/api/foodlog?id=${id}&user=${this.props.user.id}&meal=${this.props.match.params.id}&date=${formattedDate}`).then(res => {
+      console.log(res.data)
+      this.setState({
+        selected: res.data
+      })
+    })
   }
 
   render () {
+
+    console.log(this.props)
+
     const breakfastHeader = this.props.match.params.id === '1' && <h1>Breakfast</h1>
     const lunchHeader = this.props.match.params.id === '2' && <h1>Lunch</h1>
     const dinnerHeader = this.props.match.params.id === '3' && <h1>Dinner</h1>
@@ -85,10 +100,10 @@ class DailyMeal extends Component {
         )
     })
 
-    const displaySelected = this.state.selected && this.state.selected.map( (selection, index) => {
-      console.log(selection.id)
+    const displaySelected = this.state.selected && this.state.selected.map( selection => {
+      console.log(selection)
       return (
-        <div className="SelectedFood" key={index}>
+        <div className="SelectedFood" key={selection.id}>
           <h1>{selection.name}</h1>
           <h2>{selection.calories * selection.quantity} Calories</h2>
           <h2>{selection.quantity}, {selection.preparation}</h2>
@@ -118,7 +133,10 @@ class DailyMeal extends Component {
 
               <div className="DailyMealSubheader">
                 <h1>Total Calories: {this.state.totalCalories} </h1>
-                <h2>Recommended Calories:</h2>
+                <h2>Recommended Calories: {this.props.location.state.breakfastCalories}
+                  {this.props.location.state.lunchCalories}
+                  {this.props.location.state.dinnerCalories}
+                  {this.props.location.state.snackCalories}</h2>
               </div>
 
               <div className="DailyMealResults">

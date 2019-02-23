@@ -35,14 +35,15 @@ module.exports = {
         foods: foods
       }
 
-      console.log(selectedFoods)
-
       res.status(200).send(selectedFoods)
     })
-
-
-
-
     .catch(error => console.log('Unexpected error retrieving selected foods', error))
+  },
+  deleteFood: (req, res) => {
+    const db = req.app.get('db')
+    const {id, user, meal, date} = req.query
+    db.delete_food([id, user, meal, date])
+    .then(foods => res.status(200).send(foods))
+    .catch(error => console.log('Unable to delete food', error))
   }
 }

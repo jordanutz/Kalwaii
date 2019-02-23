@@ -84,7 +84,6 @@ class Diary extends Component {
         />
     </div>
 
-
     const displayGoal = this.props.profile[0].goal === 'health' ? 'Be Healthy' : null ||
       this.props.profile[0].goal === 'stronger' ? 'Get Stronger' : null ||
       this.props.profile[0].goal === 'weight' ? 'Lose Weight' : null
@@ -130,7 +129,7 @@ class Diary extends Component {
               {displayCalendar}
           </div>
           <div className="DiaryMealLog">
-            <MealLog date={this.state.date} displayDate={displayDate}/>
+            <MealLog date={this.state.date} displayDate={displayDate} nutrition={this.state.nutrition}/>
           </div>
         </div>
       </main>

@@ -10,7 +10,7 @@ module.exports = {
       const calculatedCalories = summary.reduce( (total, profile) => {
         return profile.goal === 'stronger' && total + 500 ||
         profile.goal === 'weight' && total - 500 ||
-        profile.goal === 'healthy' && total
+        profile.goal === 'health' && total
       }, calories)
 
       console.log('after', calculatedCalories)

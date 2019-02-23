@@ -35,39 +35,51 @@ class MealLog extends Component {
 
   render () {
 
-    // console.log(this.state)
+
 
       const {mealLog} = this.state
 
       const displayMealLog = mealLog.map(log => {
 
-      const BreakfastIcon = log.meal === 'Breakfast' && <img src={Breakfast} alt="Breakfast"/>
-    const LunchIcon = log.meal === 'Lunch' && <img src={Lunch} alt="Lunch" />
-  const DinnerIcon = log.meal === 'Dinner' && <img src={Dinner} alt="Dinner"/>
-const SnackIcon = log.meal === 'Snack' && <img src={Snack} alt="Snack" />
+        const breakfastIcon = log.meal === 'Breakfast' && <img src={Breakfast} alt="Breakfast"/>
+        const lunchIcon = log.meal === 'Lunch' && <img src={Lunch} alt="Lunch" />
+        const dinnerIcon = log.meal === 'Dinner' && <img src={Dinner} alt="Dinner"/>
+        const snackIcon = log.meal === 'Snack' && <img src={Snack} alt="Snack" />
 
-      return (
-        <div className="IndividualMealLog" key={log.id}>
-          <div className="MealLogImage">
-            {BreakfastIcon}
-            {LunchIcon}
-            {DinnerIcon}
-            {SnackIcon}
+        const recommendedBreakfast = log.meal === 'Breakfast' ? Math.round((this.props.nutrition.calories * 0.25)) + ' - ' + Math.round((this.props.nutrition.calories * 0.35)) : null
+
+        const recommendedLunch = log.meal === 'Lunch' ? Math.round((this.props.nutrition.calories * 0.30)) + ' - ' + Math.round((this.props.nutrition.calories * 0.40)) : null
+
+        const recommendedDinner = log.meal === 'Dinner' ? Math.round((this.props.nutrition.calories * 0.40)) + ' - ' + Math.round((this.props.nutrition.calories * 0.50)) : null
+
+        const recommendedSnack = log.meal === 'Snack' ? Math.round((this.props.nutrition.calories * 0.05)) : null
+
+        return (
+          <div className="IndividualMealLog" key={log.id}>
+            <div className="MealLogImage">
+              {breakfastIcon}
+              {lunchIcon}
+              {dinnerIcon}
+              {snackIcon}
+            </div>
+            <div className="MealLogDetails">
+              <h2>Add {log.meal}</h2>
+              <h3>Recommended Calories: {recommendedBreakfast} {recommendedLunch} {recommendedDinner} {recommendedSnack}</h3>
+            </div>
+            <Link to={{
+                pathname: `/profile/${this.props.profile[0].user_id}/foodlog/${log.id}`,
+                state: {
+                  date: this.props.date,
+                  displayDate: this.props.displayDate,
+                  breakfastCalories: recommendedBreakfast,
+                  lunchCalories: recommendedLunch,
+                  dinnerCalories: recommendedDinner,
+                  snackCalories: recommendedSnack
+                }
+              }}><img id="Add" src={Add} alt="Add Food"/></Link>
           </div>
-          <div className="MealLogDetails">
-            <h2>Add {log.meal}</h2>
-            <h3>Recommended Calories:</h3>
-          </div>
-          <Link to={{
-              pathname: `/profile/${this.props.profile[0].user_id}/foodlog/${log.id}`,
-              state: {
-                date: this.props.date,
-                displayDate: this.props.displayDate
-              }
-            }}><img id="Add" src={Add} alt="Add Food"/></Link>
-        </div>
-      )
-    })
+        )
+      })
 
     return (
       <div className="MealLog">
