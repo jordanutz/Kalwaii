@@ -13,8 +13,6 @@ module.exports = {
         profile.goal === 'health' && total
       }, calories)
 
-      console.log('after', calculatedCalories)
-
       const nutritionalInformation = {
         calories: Math.round(calculatedCalories),
         carbohydratesMin: Math.round((calculatedCalories * 0.45) / 4),

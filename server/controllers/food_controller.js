@@ -17,7 +17,7 @@ module.exports = {
     const db = req.app.get('db')
     const {userId, mealId, foodId, date, quantity} = req.body
     db.insert_food([userId, mealId, foodId, date, quantity])
-    .then(entry => console.log(entry))
+    .then(entry => res.status(200).send(entry))
     .catch(error => console.log('Unexpected error posting log', error))
   },
   getSelectedFoods: (req, res) => {
@@ -41,9 +41,7 @@ module.exports = {
   },
   deleteFood: (req, res) => {
     const db = req.app.get('db')
-    const {id, user, meal, date} = req.query
+    const {id, user, meal, date, totalCalories} = req.query
     db.delete_food([id, user, meal, date])
-    .then(foods => res.status(200).send(foods))
-    .catch(error => console.log('Unable to delete food', error))
   }
 }

@@ -14,6 +14,10 @@ Retrieves caloric expenditure for user:
 select (weight * gender_multiplier) * 24 * lean_factor_multiplier * activity_coefficient as caloric_expenditure
 from diet_users join diet_profile on diet_users.id = diet_profile.user_id where user_id = 1
 
+select sum(calories) as total_calories
+from food join user_records on food.id = user_records.food_id
+where user_id = $1 and date_posted = $2
+
 create table diet_users (
     id serial primary key,
     auth0_id text,

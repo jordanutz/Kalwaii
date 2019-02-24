@@ -18,14 +18,17 @@ class DailyMeal extends Component {
   }
 
   componentDidMount() {
+    this.getSelectedFoods()
+  }
 
+  getSelectedFoods = () => {
     const month = this.props.location.state.date.toLocaleString('en-us', { month: 'short' });
     const day = this.props.location.state.date.getDate()
     const year = this.props.location.state.date.getFullYear()
 
     const formattedDate = month + ' ' + day + ' ' + year
 
-    axios.get(`/api/selected?user=${this.props.user.id}&meal=${this.props.match.params.id}&date=${formattedDate}`)
+    axios.get(`/api/selected?user=${this.props.user.id}&meal=${this.props.match.params.id}&date=${formattedDate}&totalCalories=${this.state.totalCalories}`)
     .then(res => {
       this.setState({
         selected: res.data.foods,
@@ -60,16 +63,14 @@ class DailyMeal extends Component {
     const formattedDate = month + ' ' + day + ' ' + year
 
     axios.delete(`/api/foodlog?id=${id}&user=${this.props.user.id}&meal=${this.props.match.params.id}&date=${formattedDate}`).then(res => {
-      console.log(res.data)
       this.setState({
         selected: res.data
       })
     })
+    this.getSelectedFoods()
   }
 
   render () {
-
-    console.log(this.props)
 
     const breakfastHeader = this.props.match.params.id === '1' && <h1>Breakfast</h1>
     const lunchHeader = this.props.match.params.id === '2' && <h1>Lunch</h1>
@@ -157,7 +158,6 @@ class DailyMeal extends Component {
 const mapStateToProps = (state) => {
   return {
     user: state.user,
-
   }
 }
 

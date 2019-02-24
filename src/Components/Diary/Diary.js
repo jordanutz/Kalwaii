@@ -43,6 +43,10 @@ class Diary extends Component {
     })
   }
 
+  getTotalCalories = () => {
+    axios.get()
+  }
+
   toggleCalendar = () => {
     this.setState({
       toggleCalendar: !this.state.toggleCalendar
