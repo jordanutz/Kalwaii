@@ -126,25 +126,13 @@ class Diary extends Component {
       <main>
         <div className="DiaryHealth">
           <div className="DiaryCalories">
-            <h1>{this.state.nutrition.calories}</h1>
-              <div className="DiaryMacronutrients">
-                <div className="Macronutrient">
-                  <h3>Carbohydrates</h3>
-                  <h4>{this.state.nutrition.carbohydratesMin}g - {this.state.nutrition.carbohydratesMax}g</h4>
-                </div>
-                <div className="Macronutrient">
-                  <h3>Fat</h3>
-                  <h4>{this.state.nutrition.fatMin}g - {this.state.nutrition.fatMax}g</h4>
-                </div>
-                <div className="Macronutrient">
-                  <h3>Protein</h3>
-                  <h4>{this.state.nutrition.proteinMin}g - {this.state.nutrition.proteinMax}g</h4>
-                </div>
-                <div className="DiaryTotalCalories">
-                  <h3>{displayTotalCalories} Calories</h3>
 
-                </div>
-              </div>
+            <div className="DiaryTotalCalories">
+              <h1>{this.state.nutrition.calories ? parseInt(this.state.nutrition.calories) - displayTotalCalories : null}</h1>
+              <h2>Calories Left</h2>
+            </div>
+
+
           </div>
         </div>
         <div className="DiaryUser">
@@ -160,7 +148,24 @@ class Diary extends Component {
               {displayCalendar}
           </div>
           <div className="DiaryMealLog">
-            <MealLog date={this.state.date} displayDate={displayDate} nutrition={this.state.nutrition}/>
+            <MealLog date={this.state.date} displayDate={displayDate} nutrition={this.state.nutrition} totalCalories={displayTotalCalories}/>
+          </div>
+          <div className="DiaryMacronutrients" style={{display: 'none'}}>
+            <div className="Macronutrient">
+              <h3>Carbohydrates</h3>
+              <h4>{this.state.nutrition.carbohydratesMin}g - {this.state.nutrition.carbohydratesMax}g</h4>
+            </div>
+            <div className="Macronutrient">
+              <h3>Fat</h3>
+              <h4>{this.state.nutrition.fatMin}g - {this.state.nutrition.fatMax}g</h4>
+            </div>
+            <div className="Macronutrient">
+              <h3>Protein</h3>
+              <h4>{this.state.nutrition.proteinMin}g - {this.state.nutrition.proteinMax}g</h4>
+            </div>
+            <div className="DiaryTotalCalories">
+              <h3>{displayTotalCalories} Calories</h3>
+            </div>
           </div>
         </div>
       </main>

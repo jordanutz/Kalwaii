@@ -9,7 +9,7 @@
   flex-direction: column;
   justify-content: flex-end;
   align-items: flex-start;
-  padding-top: 2rem;
+  padding: 2rem 0 3rem 0;
 
   .HomepageHeader {
     width: 80%;
@@ -72,7 +72,6 @@
       font-size: 2rem;
       font-weight: 700;
       color: $accent-four;
-
     }
   }
 
@@ -85,6 +84,7 @@
     top: 5px;
   }
 }
+
 
 #Laptop {
   width: 500px;

@@ -32,14 +32,21 @@ main {
       color: white;
       border-bottom-left-radius: 100px;
 
-      h1 {
-        font-size: 2.5rem;
-        font-weight: 300;
-      }
+      .DiaryTotalCalories {
 
-      h2 {
-        font-weight: 300;
-        text-transform: uppercase;
+        h1 {
+          font-size: 4rem;
+          font-weight: 300;
+          margin-bottom: -.5rem;
+          text-align: center;
+        }
+
+        h2 {
+          font-size: 1.25rem;
+          text-align: center;
+          font-weight: 300;
+          text-transform: uppercase;
+        }
       }
     }
   }
@@ -94,10 +101,11 @@ main {
     }
 
     #border {
-      border-radius: 50%;
-      width: 175px;
-      height: 175px;
+      border-radius: 25%;
+      width: 200px;
+      height: 200px;
       margin-bottom: .85rem;
+      border: 3px solid $primary-color;
     }
 
     h1 {
