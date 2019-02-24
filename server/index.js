@@ -101,6 +101,7 @@ app.post('/api/logout', (req, res) => {
 // User creates profile and submits information that will determine their individualized plan.
 app.post('/api/user/profile', profile.createProfile)
 app.get('/api/user/profile/:id', profile.getProfile)
+app.get('/api/user/summary', summary.getTotalCalories)
 app.get('/api/user/summary/:id', summary.getSummary)
 app.get('/api/meal-logs', mealLog.getMealLog)
 app.get('/api/search', food.getResults)

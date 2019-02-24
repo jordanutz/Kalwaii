@@ -1,11 +1,11 @@
 import React, {Component} from 'react'
-import './Navigation.scss'
+import './Header.scss'
 import axios from 'axios'
 import {logIn, logOut} from '../../redux/reducer'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 
-class Navigation extends Component {
+class Header extends Component {
 
   login = () => {
     const redirectUri = encodeURIComponent(`${window.location.origin}/auth/callback`)
@@ -25,23 +25,28 @@ class Navigation extends Component {
      window.location.href='/'
    })
    .catch(error => console.log(error))
- }
+  }
 
   render () {
 
+    const displayAccount = this.props.user && <Link to={`/profile/${this.props.user.id}`} style={{ textDecoration: 'none' }}><span>My Profile</span></Link>
     const displayLogin = this.props.user ? <button onClick={this.logout}>Logout</button> : <button onClick={this.login}>Login</button>
 
     return (
-      <header>
-        <nav>
+      <div className="Header">
+        <div className="HeaderSecondary">
           <ul>
             <Link style={{ textDecoration: 'none' }} to='/'><h1>Kalwaii</h1></Link>
+            <li>Features</li>
+            <li>Articles</li>
+            <li>Blog</li>
           </ul>
           <ul>
+            {displayAccount}
             {displayLogin}
           </ul>
-        </nav>
-      </header>
+        </div>
+      </div>
     )
   }
 }
@@ -57,4 +62,4 @@ const mapDispatchToProps = {
   logOut
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Navigation)
+export default connect(mapStateToProps, mapDispatchToProps)(Header)

@@ -36,5 +36,19 @@ module.exports = {
     .then(profile => res.status(200).send(profile))
     .catch(error => console.log('Unexpected error editing goal', error))
 
+  },
+
+  getTotalCalories: (req, res) => {
+    const db = req.app.get('db')
+    const {user, date} = req.query
+    console.log(user, date)
+    db.get_total_calories([user, date])
+    .then(calories => {
+      let totalCalories = {
+        calories: parseInt(calories[0].total_calories)
+      }
+      res.status(200).send(totalCalories)
+    })
+    .catch(error => console.log('Unexpected error retrieving total calories for day', error))
   }
 }

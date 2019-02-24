@@ -1,9 +1,8 @@
 @import '../../index';
 
 main {
-  max-width: 70%;
+  max-width: 100%;
   height: auto;
-  padding: 1rem;
   margin: 0 auto;
   position: relative;
 
@@ -16,11 +15,12 @@ main {
   }
 
   .DiaryHealth {
-    background: $accent-one;
-    border-bottom: 1px solid $accent-one;
-    border-top: 1px solid $accent-one;
+    width: 100%;
+    background-image: linear-gradient(to right, #4facfe 0%, #00f2fe 100%);;
     padding: 1rem;
-    height: 300px;
+    height: 420px;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 500px;
 
     .DiaryCalories {
       width: 100%;
@@ -29,28 +29,32 @@ main {
       flex-direction: column;
       justify-content: center;
       align-items: center;
+      color: white;
+      border-bottom-left-radius: 100px;
 
       h1 {
-        font-size: 1.5rem;
-        color: white;
+        font-size: 2.5rem;
+        font-weight: 300;
       }
 
       h2 {
         font-weight: 300;
         text-transform: uppercase;
-        color: white;
       }
     }
   }
 
   .DiaryUser {
+    width: 65%;
     height: auto;
     display: flex;
     align-items: center;
     flex-direction: column;
     padding: 1rem;
     display: grid;
+    margin: 0 auto;
     grid-template-columns: 1fr 1fr;
+    margin-top: 1rem;
 
     .DiaryMealLog {
       width: 100%;
@@ -68,7 +72,7 @@ main {
     align-items: center;
     flex-direction: column;
     padding: 1rem;
-    border-right: 1px solid $accent-one;
+    border-right: 1px solid $accent-four;
     align-items: center;
     position: relative;
 

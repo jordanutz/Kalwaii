@@ -20,12 +20,20 @@ class Diary extends Component {
       nutrition: {},
       date: new Date(),
       toggleCalendar: false,
-      toggleGoal: false
+      toggleGoal: false,
+      totalCalories: null
     }
   }
 
-  componentDidMount() {
+  componentDidUpdate (prevState, prevProps) {
+    if (prevProps.date !== this.state.date)
+      this.getTotalCalories()
+  }
+
+  componentDidMount () {
     this.getCaloricExpenditure()
+    this.getTotalCalories()
+    window.scrollTo(0, 0)
   }
 
   handleDate = (date) => {
@@ -44,7 +52,18 @@ class Diary extends Component {
   }
 
   getTotalCalories = () => {
-    axios.get()
+
+    const day = this.state.date.getDate()
+    const month = this.state.date.toLocaleString('en-us', { month: 'short' })
+    const year = this.state.date.getFullYear()
+
+    const formattedDate = month + ' ' + day + ' ' + year
+
+    axios.get(`/api/user/summary?user=${this.props.profile[0].user_id}&date=${formattedDate}`).then(res => {
+      this.setState({
+        totalCalories: res.data.calories
+      })
+    })
   }
 
   toggleCalendar = () => {
@@ -74,6 +93,8 @@ class Diary extends Component {
 
   render () {
 
+    console.log(this.state.totalCalories)
+
     const curr_date = this.state.date.getDate()
     const curr_month = this.state.date.getMonth() + 1
     const curr_year = this.state.date.getFullYear()
@@ -99,6 +120,8 @@ class Diary extends Component {
           <button name='stronger' onClick={(event) => this.editGoal(this.props.profile[0].user_id, event)}>Get Stronger</button>
         </div>
 
+      const displayTotalCalories = this.state.totalCalories ? this.state.totalCalories : 0
+
     return (
       <main>
         <div className="DiaryHealth">
@@ -116,6 +139,10 @@ class Diary extends Component {
                 <div className="Macronutrient">
                   <h3>Protein</h3>
                   <h4>{this.state.nutrition.proteinMin}g - {this.state.nutrition.proteinMax}g</h4>
+                </div>
+                <div className="DiaryTotalCalories">
+                  <h3>{displayTotalCalories} Calories</h3>
+
                 </div>
               </div>
           </div>
