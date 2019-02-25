@@ -58,29 +58,39 @@ class FoodProfile extends Component {
   }
 
   render () {
+
     console.log(this.props)
+
+    const breakfastHeader = this.props.location.state.meal === '1' && <h1>Breakfast</h1>
+    const lunchHeader = this.props.location.state.meal === '2' && <h1>Lunch</h1>
+    const dinnerHeader = this.props.location.state.meal === '3' && <h1>Dinner</h1>
+    const snackHeader = this.props.location.state.meal === '4' && <h1>Snack</h1>
 
     const {food} = this.state
 
     return (
       <div className="FoodProfile">
+        <div className="FoodProfileHeader">
+          <h1>{breakfastHeader} {lunchHeader} {dinnerHeader} {snackHeader}</h1>
+          <h2>{this.props.location.state.formattedDate}</h2>
+        </div>
         <div className="FoodProfileSecondary">
-          <div className="FoodProfileHeader">
+          <div className="FoodProfileMain">
             <h1>{food.name}</h1>
             <h2>Calories: {food.calories && food.calories * this.state.quantity}</h2>
           </div>
           <div className="FoodProfileDetails">
             <div className="FoodProfileAlign">
               <h3>Additional Information</h3>
-              <h4>Protein: {food.protein && food.protein * this.state.quantity}</h4>
-              <h4>Carbohydrates: {food.carbohydrates && food.carbohydrates * this.state.quantity}</h4>
-              <h4>Fat: {food.fat && food.fat * this.state.quantity}</h4>
-              <h4>Saturated Fat: {food.saturated_fat && food.saturated_fat * this.state.quantity}</h4>
-              <h4>Unsaturated Fat: {food.unsaturated_fat && food.unsaturated_fat * this.state.quantity}</h4>
-              <h4>Sugar: {food.sugar && food.sugar * this.state.quantity}</h4>
-              <h4>Cholesterol: {food.cholesterol && food.cholesterol * this.state.quantity}</h4>
-              <h4>Sodium: {food.sodium && food.sodium * this.state.quantity}</h4>
-              <h4>Potassium: {food.potassium && food.potassium * this.state.quantity}</h4>
+              <h4>Protein: {food.protein && food.protein * this.state.quantity}g</h4>
+              <h4>Carbohydrates: {food.carbohydrates && food.carbohydrates * this.state.quantity}g</h4>
+              <h4>Fat: {food.fat && food.fat * this.state.quantity}g</h4>
+              <h4>Saturated Fat: {food.saturated_fat && food.saturated_fat * this.state.quantity}g</h4>
+              <h4>Unsaturated Fat: {food.unsaturated_fat && food.unsaturated_fat * this.state.quantity}g</h4>
+              <h4>Sugar: {food.sugar && food.sugar * this.state.quantity}g</h4>
+              <h4>Cholesterol: {food.cholesterol && food.cholesterol * this.state.quantity}g</h4>
+              <h4>Sodium: {food.sodium && food.sodium * this.state.quantity}mg</h4>
+              <h4>Potassium: {food.potassium && food.potassium * this.state.quantity}mg</h4>
               <div className="FoodProfileServing">
                 <NumericInput min={1} value={this.state.quantity} onChange={this.inputQuantity}/>
                 <h4>{food.preparation}</h4>

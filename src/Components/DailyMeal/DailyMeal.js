@@ -6,6 +6,7 @@ import {connect} from 'react-redux'
 
 import MagnifierTool from './assets/magnifier-tool.svg'
 import Add from '../MealLog/assets/add.svg'
+import Garbage from './assets/garbage.svg'
 
 class DailyMeal extends Component {
   constructor () {
@@ -87,7 +88,8 @@ class DailyMeal extends Component {
               pathname: `/food/${result.id}`,
               state: {
                 meal: this.props.match.params.id,
-                date: this.props.location.state.date
+                date: this.props.location.state.date,
+                formattedDate: this.props.location.state.displayDate
               }
             }} style={{ textDecoration: 'none', color: 'black' }}>
             <div className="SearchResult" key={result.id}>
@@ -107,9 +109,9 @@ class DailyMeal extends Component {
       return (
         <div className="SelectedFood" key={selection.id}>
           <h1>{selection.name}</h1>
-          <h2>{selection.calories * selection.quantity} Calories</h2>
-          <h2>{selection.quantity}, {selection.preparation}</h2>
-          <button onClick={() => this.deleteSelection(selection.id)}>Delete</button>
+          <h2>{selection.calories * selection.quantity}</h2>
+          <h3>{selection.quantity}, {selection.preparation}</h3>
+          <img src={Garbage} onClick={() => this.deleteSelection(selection.id)}/>
         </div>
       )
     })
