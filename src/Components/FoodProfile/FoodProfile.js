@@ -59,8 +59,6 @@ class FoodProfile extends Component {
 
   render () {
 
-    console.log(this.props)
-
     const breakfastHeader = this.props.location.state.meal === '1' && <h1>Breakfast</h1>
     const lunchHeader = this.props.location.state.meal === '2' && <h1>Lunch</h1>
     const dinnerHeader = this.props.location.state.meal === '3' && <h1>Dinner</h1>

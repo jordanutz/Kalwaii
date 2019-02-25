@@ -2,8 +2,8 @@
 
 .Questionnaire {
   max-width: 100vw;
-  height: 80vh;
-  background: $accent-three;
+  min-height: 100vh;
+  background: $secondary-color;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -13,8 +13,6 @@
     position: absolute;
     left: 80px;
     bottom: 0;
-    width: 400px;
-    height: 400px;
   }
 
   .QuestionnaireMain {
@@ -79,9 +77,9 @@
       .QuestionnaireButton {
         width: 250px;
         height: 65px;
-        background: linear-gradient(130deg,#7289DA,#6275BC);
+        background: $primary-color;
         border: none;
-        box-shadow: 0 4px 40px -5px #0D21A1;
+        box-shadow: 0 4px 40px -5px $primary-color;
         color: #fff;
         border-radius: 50px;
         font-weight: 300;

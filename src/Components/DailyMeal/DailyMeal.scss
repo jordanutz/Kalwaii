@@ -132,6 +132,7 @@
           display: flex;
           flex-direction: column;
           align-items: center;
+          justify-content: center;
           border-bottom: 1px solid $secondary-color;
           padding: 2rem;
           font-size: .85rem;
@@ -140,6 +141,7 @@
           h1 {
             font-weight: bolder;
             font-size: 1.10rem;
+            margin-left: 1.5rem;
           }
 
           h2 {
@@ -156,6 +158,10 @@
             background: $accent-one;
             color: white;
             border-radius: 50%;
+          }
+
+          h3 {
+            margin-left: 1.5rem;
           }
 
           img {

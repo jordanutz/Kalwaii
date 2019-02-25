@@ -33,6 +33,8 @@ class MealLog extends Component {
     })
   }
 
+
+
   render () {
 
     const {mealLog} = this.state
