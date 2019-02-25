@@ -15,6 +15,7 @@ module.exports = {
 
       const nutritionalInformation = {
         calories: Math.round(calculatedCalories),
+        standardCalories: Math.round(calories),
         carbohydratesMin: Math.round((calculatedCalories * 0.45) / 4),
         carbohydratesMax: Math.round((calculatedCalories * 0.65) / 4),
         proteinMin: Math.round((calculatedCalories * 0.10) / 4),

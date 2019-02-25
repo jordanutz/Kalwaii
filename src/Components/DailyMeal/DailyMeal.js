@@ -111,7 +111,7 @@ class DailyMeal extends Component {
           <h1>{selection.name}</h1>
           <h2>{selection.calories * selection.quantity}</h2>
           <h3>{selection.quantity}, {selection.preparation}</h3>
-          <img src={Garbage} onClick={() => this.deleteSelection(selection.id)}/>
+          <img src={Garbage} onClick={() => this.deleteSelection(selection.id)} alt="Delete Icon"/>
         </div>
       )
     })

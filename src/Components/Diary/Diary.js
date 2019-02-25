@@ -1,9 +1,12 @@
 import React, {Component} from 'react'
 import './Diary.scss'
 import axios from 'axios'
+import {Link} from 'react-router-dom'
+import { Progress } from 'antd';
 
 // Child Components
 import MealLog from '../MealLog/MealLog'
+import Details from '../Details/Details'
 
 // Redux
 import {connect} from 'react-redux'
@@ -62,7 +65,6 @@ class Diary extends Component {
     const formattedDate = month + ' ' + day + ' ' + year
 
     axios.get(`/api/user/summary?user=${this.props.profile[0].user_id}&date=${formattedDate}`).then(res => {
-      console.log(res.data)
       this.setState({
         totalCalories: res.data.calories,
         totalCarbohydrates: res.data.carbohydrates,
@@ -99,6 +101,8 @@ class Diary extends Component {
 
   render () {
 
+    console.log(this.state.nutrition)
+
     const curr_date = this.state.date.getDate()
     const curr_month = this.state.date.getMonth() + 1
     const curr_year = this.state.date.getFullYear()
@@ -128,29 +132,62 @@ class Diary extends Component {
       const displayTotalCarbohydrates = this.state.totalCarbohydrates ? this.state.totalCarbohydrates : 0
       const displayTotalFat = this.state.totalFat ? this.state.totalFat : 0
       const displayTotalProtein = this.state.totalProtein ? this.state.totalProtein : 0
+      const displayCaloricIntake = this.state.nutrition.calories ? parseInt(this.state.nutrition.calories) - displayTotalCalories : null
+      const caloriesPercentage = this.state.nutrition.standardCalories && displayTotalCalories ? parseInt(Math.floor((displayTotalCalories / this.state.nutrition.standardCalories) * 100)) : 100
+      const carbohydratesPercentage = this.state.nutrition.carbohydratesMax && displayTotalCarbohydrates ? parseInt(Math.floor((displayTotalCarbohydrates / this.state.nutrition.carbohydratesMax) * 100)) : 100
+      const fatPercentage = this.state.nutrition.fatMax && displayTotalFat ? parseInt(Math.floor((displayTotalFat / this.state.nutrition.fatMax) * 100)) : 100
+      const proteinPercentage = this.state.nutrition.proteinMax && displayTotalProtein ? parseInt(Math.floor((displayTotalFat / this.state.nutrition.proteinMax) * 100)) : 100
+
+
+      console.log(carbohydratesPercentage)
+// carbohydratesMax
+// fatMax
+// proteinMax
 
     return (
       <main>
+
         <div className="DiaryHealth">
           <div className="DiaryCalories">
 
             <div className="DiaryTotalCalories">
-              <h1>{this.state.nutrition.calories ? parseInt(this.state.nutrition.calories) - displayTotalCalories : null}</h1>
-              <h2>Calories Left</h2>
+                <Progress style={{color: 'white'}}
+                  type="circle"
+                  percent={caloriesPercentage}
+                  format={() => displayCaloricIntake}
+                  strokeWidth={3}
+                  width={175}
+                  />
+                <h2>Calories Left</h2>
             </div>
 
-            <div className="DiaryMacronutrients">
-              <div className="Macronutrient">
-                <h3>Carbohydrates</h3>
-                <h4>{this.state.nutrition.carbohydratesMax - displayTotalCarbohydrates}g left</h4>
+            <div className="Nester">
+              <div className="DiaryMacronutrients">
+                <div className="Macronutrient">
+                  <h3>Carbohydrates</h3>
+                  <Progress percent={carbohydratesPercentage} showInfo={false}  />
+                  <h4>{this.state.nutrition.carbohydratesMax - displayTotalCarbohydrates}g left</h4>
+                </div>
+                <div className="Macronutrient">
+                  <h3>Fat</h3>
+                  <Progress percent={fatPercentage} showInfo={false} />
+                  <h4>{this.state.nutrition.fatMax - displayTotalFat}g left</h4>
+                </div>
+                <div className="Macronutrient">
+                  <h3>Protein</h3>
+                  <Progress percent={proteinPercentage} showInfo={false} />
+                  <h4>{this.state.nutrition.proteinMax - displayTotalProtein}g left</h4>
+                </div>
               </div>
-              <div className="Macronutrient">
-                <h3>Fat</h3>
-                <h4>{this.state.nutrition.fatMax - displayTotalFat}g left</h4>
-              </div>
-              <div className="Macronutrient">
-                <h3>Protein</h3>
-                <h4>{this.state.nutrition.proteinMax - displayTotalProtein}g left</h4>
+
+              <div className="DiaryDetails">
+                <Link to={{
+                    pathname: '/details',
+                    state: {
+                      totalCalories: this.state.totalCalories
+                    }
+                  }}
+                  style={{textDecoration: 'none', color: 'white'}}>Details</Link>
               </div>
             </div>
           </div>
@@ -168,7 +205,10 @@ class Diary extends Component {
               {displayCalendar}
           </div>
           <div className="DiaryMealLog">
-            <MealLog date={this.state.date} displayDate={displayDate} nutrition={this.state.nutrition} totalCalories={displayTotalCalories}/>
+            <MealLog date={this.state.date}
+              displayDate={displayDate}
+              nutrition={this.state.nutrition}
+              totalCalories={displayTotalCalories}/>
           </div>
         </div>
       </main>
