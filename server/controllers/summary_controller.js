@@ -43,11 +43,16 @@ module.exports = {
     const {user, date} = req.query
     console.log(user, date)
     db.get_total_calories([user, date])
-    .then(calories => {
-      let totalCalories = {
-        calories: parseInt(calories[0].total_calories)
+    .then(nutrients => {
+
+      let totalNutrients = {
+        calories: parseInt(nutrients[0].total_calories),
+        carbohydrates: parseInt(nutrients[0].carbohydrates),
+        fat: parseInt(nutrients[0].fat),
+        protein: parseInt(nutrients[0].protein)
       }
-      res.status(200).send(totalCalories)
+
+      res.status(200).send(totalNutrients)
     })
     .catch(error => console.log('Unexpected error retrieving total calories for day', error))
   }

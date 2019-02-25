@@ -21,7 +21,10 @@ class Diary extends Component {
       date: new Date(),
       toggleCalendar: false,
       toggleGoal: false,
-      totalCalories: null
+      totalCalories: null,
+      totalCarbohydrates: null,
+      totalFat: null,
+      totalProtein: null
     }
   }
 
@@ -56,12 +59,15 @@ class Diary extends Component {
     const day = this.state.date.getDate()
     const month = this.state.date.toLocaleString('en-us', { month: 'short' })
     const year = this.state.date.getFullYear()
-
     const formattedDate = month + ' ' + day + ' ' + year
 
     axios.get(`/api/user/summary?user=${this.props.profile[0].user_id}&date=${formattedDate}`).then(res => {
+      console.log(res.data)
       this.setState({
-        totalCalories: res.data.calories
+        totalCalories: res.data.calories,
+        totalCarbohydrates: res.data.carbohydrates,
+        totalFat: res.data.fat,
+        totalProtein: res.data.protein
       })
     })
   }
@@ -93,8 +99,6 @@ class Diary extends Component {
 
   render () {
 
-    console.log(this.state.totalCalories)
-
     const curr_date = this.state.date.getDate()
     const curr_month = this.state.date.getMonth() + 1
     const curr_year = this.state.date.getFullYear()
@@ -121,6 +125,9 @@ class Diary extends Component {
         </div>
 
       const displayTotalCalories = this.state.totalCalories ? this.state.totalCalories : 0
+      const displayTotalCarbohydrates = this.state.totalCarbohydrates ? this.state.totalCarbohydrates : 0
+      const displayTotalFat = this.state.totalFat ? this.state.totalFat : 0
+      const displayTotalProtein = this.state.totalProtein ? this.state.totalProtein : 0
 
     return (
       <main>
@@ -132,7 +139,20 @@ class Diary extends Component {
               <h2>Calories Left</h2>
             </div>
 
-
+            <div className="DiaryMacronutrients">
+              <div className="Macronutrient">
+                <h3>Carbohydrates</h3>
+                <h4>{this.state.nutrition.carbohydratesMax - displayTotalCarbohydrates}g left</h4>
+              </div>
+              <div className="Macronutrient">
+                <h3>Fat</h3>
+                <h4>{this.state.nutrition.fatMax - displayTotalFat}g left</h4>
+              </div>
+              <div className="Macronutrient">
+                <h3>Protein</h3>
+                <h4>{this.state.nutrition.proteinMax - displayTotalProtein}g left</h4>
+              </div>
+            </div>
           </div>
         </div>
         <div className="DiaryUser">
@@ -149,23 +169,6 @@ class Diary extends Component {
           </div>
           <div className="DiaryMealLog">
             <MealLog date={this.state.date} displayDate={displayDate} nutrition={this.state.nutrition} totalCalories={displayTotalCalories}/>
-          </div>
-          <div className="DiaryMacronutrients" style={{display: 'none'}}>
-            <div className="Macronutrient">
-              <h3>Carbohydrates</h3>
-              <h4>{this.state.nutrition.carbohydratesMin}g - {this.state.nutrition.carbohydratesMax}g</h4>
-            </div>
-            <div className="Macronutrient">
-              <h3>Fat</h3>
-              <h4>{this.state.nutrition.fatMin}g - {this.state.nutrition.fatMax}g</h4>
-            </div>
-            <div className="Macronutrient">
-              <h3>Protein</h3>
-              <h4>{this.state.nutrition.proteinMin}g - {this.state.nutrition.proteinMax}g</h4>
-            </div>
-            <div className="DiaryTotalCalories">
-              <h3>{displayTotalCalories} Calories</h3>
-            </div>
           </div>
         </div>
       </main>

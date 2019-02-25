@@ -3,39 +3,40 @@
 .DailyMeal {
   width: 100%;
   background: $accent-three;
-  height: 80vh;
+  height: auto;
+
+  .DailyMealHeader {
+    background-image: linear-gradient(to right, #4facfe 0%, #00f2fe 100%);
+    height: 40vh;
+    color: white;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    border-bottom-left-radius: 500px;
+    border-bottom-right-radius: 500px;
+
+    h1 {
+      text-transform: uppercase;
+      font-weight: 300;
+      font-size: 2.5rem;
+    }
+
+    h2 {
+      font-size: 1rem;
+      right: 0;
+      bottom: 0;
+      font-weight: 300;
+    }
+  }
 
     .DailyMealSecondary {
       max-width: 70%;
       margin: 0 auto;
-      height: auto;
       height: 100%;
-
-    .DailyMealHeader {
-      background: $accent-one;
-      color: white;
-      padding: 2rem;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      position: relative;
-
-      h1 {
-        text-transform: uppercase;
-        font-weight: 300;
-        font-size: 3rem;
-      }
-
-      h2 {
-        font-size: 1.5rem;
-        position: absolute;
-        right: 0;
-        bottom: 0;
-        padding: 1rem;
-        font-weight: 300;
-      }
-
-    }
+      height: 100%;
 
     .DailyMealMain {
       display: grid;
@@ -53,12 +54,11 @@
         height: 50px;
 
         #Magnifier {
-          width: 30px;
-          height: 30px;
-          top: 10px;
+          width: 20px;
+          height: 20px;
+          top: 15px;
           left: 35px;
           position: absolute;
-
         }
 
         input {
@@ -74,7 +74,7 @@
 
       .DailyMealSubheader {
         height: 50px;
-        color: #111;
+        color: $secondary-color;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -87,9 +87,7 @@
         flex-direction: column;
         align-items: center;
         padding: .5rem;
-        height: 45vh;
-        overflow: scroll;
-        border-right: 1px solid $accent-one;
+        min-height: 40vh;
 
         h3 {
           font-size: .85rem;
@@ -101,7 +99,7 @@
           display: flex;
           justify-content: space-between;
           min-height: 100px;
-          width: 20rem;
+          width: 22rem;
           background: white;
           margin-bottom: 1rem;
           padding: 1rem;
@@ -118,7 +116,8 @@
             }
           }
 
-          button {
+          img {
+            width: 30px;
             height: 30px;
           }
         }
@@ -130,12 +129,11 @@
         padding: 1rem;
         height: auto;
         overflow: scroll;
-        background: $accent-one;
 
         .SelectedFood {
           display: flex;
           flex-direction: column;
-          border-bottom: 1px solid gray;
+          border-bottom: 1px solid $secondary-color;
           padding: .75rem;
           font-size: .85rem;
 

@@ -5,6 +5,7 @@ import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
 
 import MagnifierTool from './assets/magnifier-tool.svg'
+import Add from '../MealLog/assets/add.svg'
 
 class DailyMeal extends Component {
   constructor () {
@@ -19,6 +20,7 @@ class DailyMeal extends Component {
 
   componentDidMount() {
     this.getSelectedFoods()
+    window.scrollTo(0, 0)
   }
 
   getSelectedFoods = () => {
@@ -94,7 +96,7 @@ class DailyMeal extends Component {
                 <h2>Calories: {result.calories}</h2>
               </div>
               <div className="SearchSelection">
-                <button>Add</button>
+                <img src={Add} alt="Add Icon" />
               </div>
             </div>
         </Link>
@@ -102,7 +104,6 @@ class DailyMeal extends Component {
     })
 
     const displaySelected = this.state.selected && this.state.selected.map( selection => {
-      console.log(selection)
       return (
         <div className="SelectedFood" key={selection.id}>
           <h1>{selection.name}</h1>
@@ -113,11 +114,10 @@ class DailyMeal extends Component {
       )
     })
 
-    const displaySearch = this.state.search.length === 0 ? <h1>Search Results</h1> : <h3>{this.state.search.length + ' '} of 40 Results</h3>
+    const displaySearch = this.state.search.length === 0 ? null : <h3>{this.state.search.length + ' '} of 40 Results</h3>
 
     return (
         <div className="DailyMeal">
-          <div className="DailyMealSecondary">
             <div className="DailyMealHeader">
               {breakfastHeader}
               {lunchHeader}
@@ -125,6 +125,7 @@ class DailyMeal extends Component {
               {snackHeader}
               <h2>{this.props.location.state.displayDate}</h2>
             </div>
+            <div className="DailyMealSecondary">
             <div className="DailyMealMain">
 
               <div className="DailyMealSearch">
@@ -142,7 +143,7 @@ class DailyMeal extends Component {
 
               <div className="DailyMealResults">
                  {displaySearch}
-                {displayResults}
+                 {displayResults}
               </div>
 
               <div className="DailyMealSelected">

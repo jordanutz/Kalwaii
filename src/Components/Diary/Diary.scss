@@ -16,7 +16,7 @@ main {
 
   .DiaryHealth {
     width: 100%;
-    background-image: linear-gradient(to right, #4facfe 0%, #00f2fe 100%);;
+    background-image: linear-gradient(to right, #4facfe 0%, #00f2fe 100%);
     padding: 1rem;
     height: 420px;
     border-bottom-left-radius: 0px;
@@ -46,6 +46,25 @@ main {
           text-align: center;
           font-weight: 300;
           text-transform: uppercase;
+        }
+      }
+
+      .DiaryMacronutrients {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        text-align: center;
+        grid-column-gap: 30px;
+        margin-top: 1rem;
+        align-items: center;
+
+        h3 {
+          text-transform: uppercase;
+          font-weight: 300;
+        }
+
+        h4 {
+          font-size: .85rem;
+          text-align: center;
         }
       }
     }
@@ -94,14 +113,14 @@ main {
 
       button {
         width: 100%;
-        background: $accent-one;
+        background: $primary-color;
         color: white;
         font-weight: bolder;
       }
     }
 
     #border {
-      border-radius: 25%;
+      border-radius: 50%;
       width: 200px;
       height: 200px;
       margin-bottom: .85rem;
@@ -116,18 +135,6 @@ main {
       margin-bottom: .60rem;
       font-size: .85rem;
       font-weight: bolder;
-    }
-
-    .DiaryMacronutrients {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      text-align: center;
-      grid-column-gap: 20px;
-      margin-bottom: 1rem;
-
-      h4 {
-        font-size: .85rem;
-      }
     }
 
     .DiaryCalendar {

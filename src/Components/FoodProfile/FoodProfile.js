@@ -14,6 +14,11 @@ class FoodProfile extends Component {
   }
 
   componentDidMount () {
+    this.getFood()
+    window.scrollTo(0, 0)
+  }
+
+  getFood = () => {
     axios.get(`/api/foodlog/food/${this.props.match.params.id}`).then(res => {
       this.setState({
         food: res.data[0]

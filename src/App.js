@@ -7,15 +7,12 @@ import Footer from './Components/Footer/Footer'
 import routes from './routes'
 import {withRouter} from 'react-router-dom'
 
-import {connect} from 'react-redux'
 
 class App extends Component {
 
   render() {
 
-    console.log(this.props)
-
-    const displayNavigation = this.props.user && this.props.location.pathname === `/profile/${this.props.user.id}` ? <Navigation /> : <Header />
+    const displayNavigation = this.props.location.pathname === '/' ? <Header /> : <Navigation />
 
     return (
       <div className="App">
@@ -23,14 +20,8 @@ class App extends Component {
         {routes}
         <Footer/>
       </div>
-    );
+    )
   }
 }
 
-const mapStateToProps = (state) => {
-  return {
-    user: state.user
-  }
-}
-
-export default withRouter(connect(mapStateToProps)(App))
+export default withRouter(App)
