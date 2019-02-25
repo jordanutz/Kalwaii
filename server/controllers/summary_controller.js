@@ -46,6 +46,8 @@ module.exports = {
     db.get_total_calories([user, date])
     .then(nutrients => {
 
+      console.log(nutrients)
+
       let totalNutrients = {
         calories: parseInt(nutrients[0].total_calories),
         carbohydrates: parseInt(nutrients[0].carbohydrates),

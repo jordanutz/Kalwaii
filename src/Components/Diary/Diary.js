@@ -65,6 +65,7 @@ class Diary extends Component {
     const formattedDate = month + ' ' + day + ' ' + year
 
     axios.get(`/api/user/summary?user=${this.props.profile[0].user_id}&date=${formattedDate}`).then(res => {
+      console.log(res.data.calories)
       this.setState({
         totalCalories: res.data.calories,
         totalCarbohydrates: res.data.carbohydrates,
@@ -138,11 +139,7 @@ class Diary extends Component {
       const fatPercentage = this.state.nutrition.fatMax && displayTotalFat ? parseInt(Math.floor((displayTotalFat / this.state.nutrition.fatMax) * 100)) : 100
       const proteinPercentage = this.state.nutrition.proteinMax && displayTotalProtein ? parseInt(Math.floor((displayTotalFat / this.state.nutrition.proteinMax) * 100)) : 100
 
-
-      console.log(carbohydratesPercentage)
-// carbohydratesMax
-// fatMax
-// proteinMax
+      console.log(displayTotalCalories)
 
     return (
       <main>
