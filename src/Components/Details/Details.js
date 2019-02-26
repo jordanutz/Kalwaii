@@ -33,6 +33,13 @@ class Details extends Component {
     	}]
     };
 
+    const totalGrams = this.props.consumedCarbohydrates + this.props.consumedProtein + this.props.consumedFat
+    const totalCarbohydrates = Math.floor((this.props.consumedCarbohydrates / totalGrams) * 100)
+    const totalFat = Math.floor((this.props.consumedFat / totalGrams) * 100)
+    const totalProtein = Math.floor((this.props.consumedProtein / totalGrams) * 100)
+
+    console.log(totalGrams)
+
     const userIntakeData = {
       labels: [
         'Carbohydrates',
@@ -40,7 +47,7 @@ class Details extends Component {
         'Fat'
       ],
       datasets: [{
-        data: [this.props.carbohydratesPercentage, this.props.proteinPercentage, this.props.fatPercentage ],
+        data: [ totalCarbohydrates, totalProtein, totalFat ],
         backgroundColor: [
         '#33C9FF',
         '#F0B67F',
@@ -53,6 +60,8 @@ class Details extends Component {
         ]
       }]
     };
+
+
 
 
     console.log(this.props)
