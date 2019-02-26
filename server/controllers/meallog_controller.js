@@ -8,7 +8,6 @@ module.exports = {
   getTotalCalories: (req, res) => {
     const db = req.app.get('db')
     const {user, date} = req.query
-    console.log(date)
     db.get_meal_calories([user, date])
     .then(calories => {
 

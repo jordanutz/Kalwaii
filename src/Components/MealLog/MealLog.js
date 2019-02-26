@@ -31,7 +31,6 @@ class MealLog extends Component {
   }
 
   componentDidUpdate (prevState, prevProps) {
-    console.log(prevState)
     if (prevState.formattedDate !== this.props.formattedDate) {
       this.getMealCalories()
     }
@@ -46,7 +45,6 @@ class MealLog extends Component {
   }
 
   getMealCalories = () => {
-    console.log(this.props.formattedDate)
     axios.get(`/api/meal-logs/calories?user=${this.props.profile[0].user_id}&date=${this.props.formattedDate}`).then(res => {
       this.setState({
         breakfastCalories: res.data.breakfast,
