@@ -34,21 +34,16 @@ class FoodProfile extends Component {
 
   submitLog = (userId, mealId, foodId, date, quantity) => {
 
-    const month = date.toLocaleString('en-us', { month: 'short' });
-    const day = date.getDate()
-    const year = date.getFullYear()
-
-    const formattedDate = month + ' ' + day + ' ' + year
-
     const logDetails = {
       userId: userId,
       mealId: parseInt(mealId),
       foodId: foodId,
-      date: formattedDate.toString(),
+      date: this.props.location.state.formattedDate,
       quantity: quantity
     }
+
     axios.post('/api/foodlog', logDetails).then(res => {
-      console.log(res.data)
+
     })
     this.goBack()
   }
@@ -70,7 +65,7 @@ class FoodProfile extends Component {
       <div className="FoodProfile">
         <div className="FoodProfileHeader">
           <h1>{breakfastHeader} {lunchHeader} {dinnerHeader} {snackHeader}</h1>
-          <h2>{this.props.location.state.formattedDate}</h2>
+          <h2>{this.props.location.state.displayDate}</h2>
         </div>
         <div className="FoodProfileSecondary">
           <div className="FoodProfileMain">

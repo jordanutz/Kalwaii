@@ -25,13 +25,7 @@ class DailyMeal extends Component {
   }
 
   getSelectedFoods = () => {
-    const month = this.props.location.state.date.toLocaleString('en-us', { month: 'short' });
-    const day = this.props.location.state.date.getDate()
-    const year = this.props.location.state.date.getFullYear()
-
-    const formattedDate = month + ' ' + day + ' ' + year
-
-    axios.get(`/api/selected?user=${this.props.user.id}&meal=${this.props.match.params.id}&date=${formattedDate}&totalCalories=${this.state.totalCalories}`)
+    axios.get(`/api/selected?user=${this.props.user.id}&meal=${this.props.match.params.id}&date=${this.props.location.state.formattedDate}&totalCalories=${this.state.totalCalories}`)
     .then(res => {
       this.setState({
         selected: res.data.foods,
@@ -58,14 +52,7 @@ class DailyMeal extends Component {
   }
 
   deleteSelection = (id) => {
-
-    const month = this.props.location.state.date.toLocaleString('en-us', { month: 'short' });
-    const day = this.props.location.state.date.getDate()
-    const year = this.props.location.state.date.getFullYear()
-
-    const formattedDate = month + ' ' + day + ' ' + year
-
-    axios.delete(`/api/foodlog?id=${id}&user=${this.props.user.id}&meal=${this.props.match.params.id}&date=${formattedDate}`).then(res => {
+    axios.delete(`/api/foodlog?id=${id}&user=${this.props.user.id}&meal=${this.props.match.params.id}&date=${this.props.location.state.formattedDate}`).then(res => {
       this.setState({
         selected: res.data
       })
@@ -89,7 +76,8 @@ class DailyMeal extends Component {
               state: {
                 meal: this.props.match.params.id,
                 date: this.props.location.state.date,
-                formattedDate: this.props.location.state.displayDate
+                formattedDate: this.props.location.state.formattedDate,
+                displayDate: this.props.location.state.displayDate
               }
             }} style={{ textDecoration: 'none', color: 'black' }}>
             <div className="SearchResult" key={result.id}>

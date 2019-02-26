@@ -35,13 +35,11 @@ module.exports = {
     db.edit_goal([id, goal])
     .then(profile => res.status(200).send(profile))
     .catch(error => console.log('Unexpected error editing goal', error))
-
   },
 
   getTotalCalories: (req, res) => {
     const db = req.app.get('db')
     const {user, date} = req.query
-    console.log(user, date)
     db.get_total_calories([user, date])
     .then(nutrients => {
 

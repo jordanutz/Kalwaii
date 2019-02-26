@@ -101,12 +101,18 @@ class Diary extends Component {
 
   render () {
 
-    console.log(this.state.nutrition)
-
+    // Calendar Formatted Date
     const curr_date = this.state.date.getDate()
     const curr_month = this.state.date.getMonth() + 1
     const curr_year = this.state.date.getFullYear()
     const displayDate = curr_month + "/" + curr_date + "/" + curr_year
+
+    // Fornatted Date for Database
+    const day = this.state.date.getDate()
+    const month = this.state.date.toLocaleString('en-us', { month: 'short' })
+    const year = this.state.date.getFullYear()
+    const formattedDate = month + ' ' + day + ' ' + year
+
     const displayCalendar = this.state.toggleCalendar &&
       <div className="Calendar">
         <Calendar
@@ -137,8 +143,6 @@ class Diary extends Component {
       const carbohydratesPercentage = this.state.nutrition.carbohydratesMax && displayTotalCarbohydrates ? parseInt(Math.floor((displayTotalCarbohydrates / this.state.nutrition.carbohydratesMax) * 100)) : 100
       const fatPercentage = this.state.nutrition.fatMax && displayTotalFat ? parseInt(Math.floor((displayTotalFat / this.state.nutrition.fatMax) * 100)) : 100
       const proteinPercentage = this.state.nutrition.proteinMax && displayTotalProtein ? parseInt(Math.floor((displayTotalFat / this.state.nutrition.proteinMax) * 100)) : 100
-
-      console.log(displayTotalCalories)
 
     return (
       <main>
@@ -201,10 +205,13 @@ class Diary extends Component {
               {displayCalendar}
           </div>
           <div className="DiaryMealLog">
-            <MealLog date={this.state.date}
+            <MealLog
+              date={this.state.date}
               displayDate={displayDate}
               nutrition={this.state.nutrition}
-              totalCalories={displayTotalCalories}/>
+              totalCalories={displayTotalCalories}
+              formattedDate={formattedDate}
+              />
           </div>
         </div>
       </main>

@@ -28,7 +28,7 @@ class Navigation extends Component {
  }
 
   render () {
-
+    const displayAccount = this.props.user && <Link style={{textDecoration: 'none', color: 'white'}} to={`/profile/${this.props.user.id}`}><span>My Profile</span></Link>
     const displayLogin = this.props.user ? <button onClick={this.logout}>Logout</button> : <button onClick={this.login}>Login</button>
 
     return (
@@ -38,6 +38,7 @@ class Navigation extends Component {
             <Link style={{ textDecoration: 'none' }} to='/'><h1>Kalwaii</h1></Link>
           </ul>
           <ul>
+            {displayAccount}
             {displayLogin}
           </ul>
         </nav>

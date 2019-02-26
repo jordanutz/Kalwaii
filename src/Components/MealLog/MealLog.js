@@ -22,6 +22,7 @@ class MealLog extends Component {
 
   componentDidMount() {
     this.getMealLogs()
+    this.getMealCalories()
     window.scrollTo(0, 0)
   }
 
@@ -33,7 +34,11 @@ class MealLog extends Component {
     })
   }
 
-
+  getMealCalories = () => {
+    axios.get(`/api/meal-logs/calories?user=${this.props.profile[0].user_id}&date=${this.props.formattedDate}`).then(res => {
+      console.log(res.data)
+    })
+  }
 
   render () {
 
@@ -41,14 +46,14 @@ class MealLog extends Component {
 
     const displayMealLog = mealLog.map(log => {
 
-    const breakfastIcon = log.meal === 'Breakfast' && <img src={Breakfast} alt="Breakfast"/>
-    const lunchIcon = log.meal === 'Lunch' && <img src={Lunch} alt="Lunch" />
-    const dinnerIcon = log.meal === 'Dinner' && <img src={Dinner} alt="Dinner"/>
-    const snackIcon = log.meal === 'Snack' && <img src={Snack} alt="Snack" />
-    const recommendedBreakfast = log.meal === 'Breakfast' ? Math.round((this.props.nutrition.calories * 0.25)) + ' - ' + Math.round((this.props.nutrition.calories * 0.35)) : null
-    const recommendedLunch = log.meal === 'Lunch' ? Math.round((this.props.nutrition.calories * 0.30)) + ' - ' + Math.round((this.props.nutrition.calories * 0.40)) : null
-    const recommendedDinner = log.meal === 'Dinner' ? Math.round((this.props.nutrition.calories * 0.40)) + ' - ' + Math.round((this.props.nutrition.calories * 0.50)) : null
-    const recommendedSnack = log.meal === 'Snack' ? Math.round((this.props.nutrition.calories * 0.05)) : null
+      const breakfastIcon = log.meal === 'Breakfast' && <img src={Breakfast} alt="Breakfast"/>
+      const lunchIcon = log.meal === 'Lunch' && <img src={Lunch} alt="Lunch" />
+      const dinnerIcon = log.meal === 'Dinner' && <img src={Dinner} alt="Dinner"/>
+      const snackIcon = log.meal === 'Snack' && <img src={Snack} alt="Snack" />
+      const recommendedBreakfast = log.meal === 'Breakfast' ? Math.round((this.props.nutrition.calories * 0.25)) + ' - ' + Math.round((this.props.nutrition.calories * 0.35)) : null
+      const recommendedLunch = log.meal === 'Lunch' ? Math.round((this.props.nutrition.calories * 0.30)) + ' - ' + Math.round((this.props.nutrition.calories * 0.40)) : null
+      const recommendedDinner = log.meal === 'Dinner' ? Math.round((this.props.nutrition.calories * 0.40)) + ' - ' + Math.round((this.props.nutrition.calories * 0.50)) : null
+      const recommendedSnack = log.meal === 'Snack' ? Math.round((this.props.nutrition.calories * 0.05)) : null
 
         return (
           <div className="IndividualMealLog" key={log.id}>
@@ -67,6 +72,7 @@ class MealLog extends Component {
                 state: {
                   date: this.props.date,
                   displayDate: this.props.displayDate,
+                  formattedDate: this.props.formattedDate,
                   breakfastCalories: recommendedBreakfast,
                   lunchCalories: recommendedLunch,
                   dinnerCalories: recommendedDinner,

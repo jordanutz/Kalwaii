@@ -110,6 +110,7 @@ app.post('/api/foodlog', food.postFood)
 app.get('/api/selected', food.getSelectedFoods)
 app.put('/api/summary/:id', summary.editGoal)
 app.delete('/api/foodlog', food.deleteFood)
+app.get('/api/meal-logs/calories', mealLog.getTotalCalories)
 
 massive(process.env.CONNECTION_STRING).then(db => {
   app.set('db', db)
