@@ -16,7 +16,11 @@ class MealLog extends Component {
   constructor () {
     super()
     this.state = {
-      mealLog: []
+      mealLog: [],
+      breakfastCalories: null,
+      lunchCalories: null,
+      dinnerCalories: null,
+      snackCalories: null
     }
   }
 
@@ -24,6 +28,13 @@ class MealLog extends Component {
     this.getMealLogs()
     this.getMealCalories()
     window.scrollTo(0, 0)
+  }
+
+  componentDidUpdate (prevState, prevProps) {
+    console.log(prevState)
+    if (prevState.formattedDate !== this.props.formattedDate) {
+      this.getMealCalories()
+    }
   }
 
   getMealLogs = () => {
@@ -35,8 +46,14 @@ class MealLog extends Component {
   }
 
   getMealCalories = () => {
+    console.log(this.props.formattedDate)
     axios.get(`/api/meal-logs/calories?user=${this.props.profile[0].user_id}&date=${this.props.formattedDate}`).then(res => {
-      console.log(res.data)
+      this.setState({
+        breakfastCalories: res.data.breakfast,
+        lunchCalories: res.data.lunch,
+        dinnerCalories: res.data.dinner,
+        snackCalories: res.data.snack
+      })
     })
   }
 
@@ -54,6 +71,10 @@ class MealLog extends Component {
       const recommendedLunch = log.meal === 'Lunch' ? Math.round((this.props.nutrition.calories * 0.30)) + ' - ' + Math.round((this.props.nutrition.calories * 0.40)) : null
       const recommendedDinner = log.meal === 'Dinner' ? Math.round((this.props.nutrition.calories * 0.40)) + ' - ' + Math.round((this.props.nutrition.calories * 0.50)) : null
       const recommendedSnack = log.meal === 'Snack' ? Math.round((this.props.nutrition.calories * 0.05)) : null
+      const totalBreakfast = log.meal === 'Breakfast' && this.state.breakfastCalories ? <h4>{this.state.breakfastCalories}</h4> : null
+      const totalLunch = log.meal === 'Lunch' && this.state.lunchCalories ? <h4>{this.state.lunchCalories}</h4> : null
+      const totalDinner = log.meal === 'Dinner' && this.state.dinnerCalories ? <h4>{this.state.dinnerCalories}</h4> : null
+      const totalSnack = log.meal === 'Snack' && this.state.snackCalories ? <h4>{this.state.snackCalories}</h4> : null
 
         return (
           <div className="IndividualMealLog" key={log.id}>
@@ -66,6 +87,7 @@ class MealLog extends Component {
             <div className="MealLogDetails">
               <h2>Add {log.meal}</h2>
               <h3>Recommended Calories: {recommendedBreakfast} {recommendedLunch} {recommendedDinner} {recommendedSnack}</h3>
+              {totalBreakfast} {totalLunch} {totalDinner} {totalSnack}
             </div>
             <Link to={{
                 pathname: `/profile/${this.props.profile[0].user_id}/foodlog/${log.id}`,

@@ -112,6 +112,7 @@ class Diary extends Component {
     const month = this.state.date.toLocaleString('en-us', { month: 'short' })
     const year = this.state.date.getFullYear()
     const formattedDate = month + ' ' + day + ' ' + year
+    console.log(formattedDate)
 
     const displayCalendar = this.state.toggleCalendar &&
       <div className="Calendar">
