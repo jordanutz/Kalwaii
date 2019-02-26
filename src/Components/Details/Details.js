@@ -12,6 +12,11 @@ class Details extends Component {
 
   render () {
 
+    const totalGrams = this.props.consumedCarbohydrates + this.props.consumedProtein + this.props.consumedFat
+    const totalCarbohydrates = Math.floor((this.props.consumedCarbohydrates / totalGrams) * 100)
+    const totalFat = Math.floor((this.props.consumedFat / totalGrams) * 100)
+    const totalProtein = Math.floor((this.props.consumedProtein / totalGrams) * 100)
+
     const goalIntakeData = {
     	labels: [
     		'Carbohydrates',
@@ -32,13 +37,6 @@ class Details extends Component {
     		]
     	}]
     };
-
-    const totalGrams = this.props.consumedCarbohydrates + this.props.consumedProtein + this.props.consumedFat
-    const totalCarbohydrates = Math.floor((this.props.consumedCarbohydrates / totalGrams) * 100)
-    const totalFat = Math.floor((this.props.consumedFat / totalGrams) * 100)
-    const totalProtein = Math.floor((this.props.consumedProtein / totalGrams) * 100)
-
-    console.log(totalGrams)
 
     const userIntakeData = {
       labels: [
@@ -61,10 +59,41 @@ class Details extends Component {
       }]
     };
 
-
-
-
-    console.log(this.props)
+    const comparisonData = {
+      labels: [
+        'Carbohydrates',
+        'Protein',
+        'Fat'
+      ],
+      datasets: [
+        {
+          label: 'Goal Intake',
+          backgroundColor: [
+          '#33C9FF',
+          '#33C9FF',
+          '#33C9FF'
+          ],
+          borderWidth: 2,
+          borderColor: 'white',
+          hoverBackgroundColor: 'rgba(255,99,132,0.4)',
+          hoverBorderColor: 'rgba(255,99,132,1)',
+          data: [50, 20, 30]
+        },
+        {
+          label: 'Your Intake',
+          backgroundColor: [
+          '#00FF91',
+          '#00FF91',
+          '#00FF91'
+          ],
+          borderWidth: 2,
+          borderColor: 'white',
+          hoverBackgroundColor: 'rgba(255,99,132,0.4)',
+          hoverBorderColor: 'rgba(255,99,132,1)',
+          data: [totalCarbohydrates, totalProtein, totalFat],
+        }
+      ]
+    };
 
     return (
       <div className="Details">
@@ -112,9 +141,7 @@ class Details extends Component {
                 height={100}
                 options={{
 		                maintainAspectRatio: true
-	                }}
-              />
-
+	                }}/>
             </div>
             <div className="GoalIntake">
               <h2>User Intake</h2>
@@ -123,18 +150,24 @@ class Details extends Component {
                   height={100}
                   options={{
   		                maintainAspectRatio: true
-  	                }}
-                />
+  	                }}/>
             </div>
           </div>
-
+          <div className="DetailsComparison">
+            <h2>Comparison</h2>
+              <Bar
+               data={comparisonData}
+               width={100}
+               height={50}
+               options={{
+                 maintainAspectRatio: true
+               }}
+             />
+          </div>
+          <div className="DetailsSummary">
+            <h2>Summary</h2>
+          </div>
         </div>
-
-
-
-          <h2>Comparison</h2>
-          <h2>Details</h2>
-
       </div>
     )
   }
