@@ -12,6 +12,8 @@ class Details extends Component {
 
   render () {
 
+    console.log(this.props)
+
     const totalGrams = this.props.consumedCarbohydrates + this.props.consumedProtein + this.props.consumedFat
     const totalCarbohydrates = Math.floor((this.props.consumedCarbohydrates / totalGrams) * 100)
     const totalFat = Math.floor((this.props.consumedFat / totalGrams) * 100)
@@ -92,7 +94,8 @@ class Details extends Component {
           hoverBorderColor: 'rgba(255,99,132,1)',
           data: [totalCarbohydrates, totalProtein, totalFat],
         }
-      ]
+      ],
+
     };
 
     return (
@@ -160,12 +163,32 @@ class Details extends Component {
                width={100}
                height={50}
                options={{
-                 maintainAspectRatio: true
+                 maintainAspectRatio: true,
+                 scales: {
+                    yAxes: [{
+                      ticks: {
+                        beginAtZero: true,
+      
+                      }
+                    }]
+                  }
                }}
              />
           </div>
           <div className="DetailsSummary">
             <h2>Summary</h2>
+            <div className="DetailsGrid">
+              <h5 id="Bold" className="Margin">Protein</h5><h6 className="Margin">{this.props.consumedProtein}g</h6>
+              <h5 id="Bold">Carbohydrates</h5><h6>{this.props.consumedCarbohydrates}g</h6>
+              <h5 className="Margin">Sugar</h5><h6 className="Margin">{this.props.totalSugar}g</h6>
+              <h5 id="Bold">Fat</h5><h6>{this.props.consumedFat}g</h6>
+              <h5>Saturated Fat</h5><h6>{this.props.totalSaturatedFat}g</h6>
+              <h5 className="Margin">Unsaturated Fat</h5><h6 className="Margin">{this.props.totalUnsaturatedFat}g</h6>
+              <h5 id="Bold">Other</h5><div></div>
+              <h5>Cholesterol</h5><h6>{this.props.totalCholesterol}mg</h6>
+              <h5>Sodium</h5><h6>{this.props.totalSodium}mg</h6>
+              <h5>Potassium</h5><h6>{this.props.totalPotassium}mg</h6>
+            </div>
           </div>
         </div>
       </div>

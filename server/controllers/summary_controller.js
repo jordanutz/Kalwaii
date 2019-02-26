@@ -47,7 +47,13 @@ module.exports = {
         calories: parseInt(nutrients[0].total_calories),
         carbohydrates: parseInt(nutrients[0].carbohydrates),
         fat: parseInt(nutrients[0].fat),
-        protein: parseInt(nutrients[0].protein)
+        protein: parseInt(nutrients[0].protein),
+        sugar: parseInt(nutrients[0].sugar),
+        saturatedFat: parseInt(nutrients[0].saturatedfat),
+        unsaturatedFat: parseInt(nutrients[0].unsaturatedfat),
+        cholesterol: parseInt(nutrients[0].cholesterol),
+        sodium: parseInt(nutrients[0].sodium),
+        potassium: parseInt(nutrients[0].potassium)
       }
 
       res.status(200).send(totalNutrients)

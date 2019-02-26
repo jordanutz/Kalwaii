@@ -27,7 +27,13 @@ class Diary extends Component {
       totalCalories: null,
       totalCarbohydrates: null,
       totalFat: null,
-      totalProtein: null
+      totalProtein: null,
+      totalSugar: null,
+      totalSaturatedFat: null,
+      totalUnsaturatedFat: null,
+      totalCholesterol: null,
+      totalSodium: null,
+      totalPotassium: null
     }
   }
 
@@ -69,7 +75,13 @@ class Diary extends Component {
         totalCalories: res.data.calories,
         totalCarbohydrates: res.data.carbohydrates,
         totalFat: res.data.fat,
-        totalProtein: res.data.protein
+        totalProtein: res.data.protein,
+        totalSugar: res.data.sugar,
+        totalSaturatedFat: res.data.saturatedFat,
+        totalUnsaturatedFat: res.data.unsaturatedFat,
+        totalCholesterol: res.data.cholesterol,
+        totalSodium: res.data.sodium,
+        totalPotassium: res.data.potassium
       })
     })
   }
@@ -144,9 +156,14 @@ class Diary extends Component {
     const displayTotalCarbohydrates = this.state.totalCarbohydrates ? this.state.totalCarbohydrates : 0
     const displayTotalFat = this.state.totalFat ? this.state.totalFat : 0
     const displayTotalProtein = this.state.totalProtein ? this.state.totalProtein : 0
+    const displayTotalSugar = this.state.totalSugar ? this.state.totalSugar : 0
+    const displayTotalSaturatedFat = this.state.totalSaturatedFat ? this.state.totalSaturatedFat : 0
+    const displayTotalUnsaturatedFat = this.state.totalUnsaturatedFat ? this.state.totalUnsaturatedFat : 0
+    const displayTotalCholesterol = this.state.totalCholesterol ? this.state.totalCholesterol : 0
+    const displayTotalSodium = this.state.totalSodium ? this.state.totalSodium : 0
+    const displayTotalPotassium = this.state.totalPotassium ? this.state.totalPotassium : 0
+
     const displayCaloricIntake = this.state.nutrition.calories ? parseInt(this.state.nutrition.calories) - displayTotalCalories : null
-
-
     const caloriesPercentage = this.state.nutrition.standardCalories && displayTotalCalories ? parseInt(Math.floor((displayTotalCalories / this.state.nutrition.standardCalories) * 100)) : 0
     const carbohydratesPercentage = this.state.nutrition.carbohydratesMax && displayTotalCarbohydrates ? parseInt(Math.floor((displayTotalCarbohydrates / this.state.nutrition.carbohydratesMax) * 100)) : 0
     const fatPercentage = this.state.nutrition.fatMax && displayTotalFat ? parseInt(Math.floor((displayTotalFat / this.state.nutrition.fatMax) * 100)) : 0
@@ -169,6 +186,12 @@ class Diary extends Component {
         carbohydratesPercentage={carbohydratesPercentage}
         fatPercentage={fatPercentage}
         proteinPercentage={proteinPercentage}
+        totalSugar={displayTotalSugar}
+        totalSaturatedFat={displayTotalSaturatedFat}
+        totalUnsaturatedFat={displayTotalUnsaturatedFat}
+        totalCholesterol={displayTotalCholesterol}
+        totalSodium={displayTotalSodium}
+        totalPotassium={displayTotalPotassium}
         />
 
     return (
