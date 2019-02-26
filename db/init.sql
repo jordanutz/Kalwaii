@@ -21,6 +21,13 @@ SUM (protein) AS protein
 FROM food JOIN user_records ON food.id = user_records.food_id
 WHERE user_id = $1 AND date_posted = $2
 
+
+
+select sum(calories * quantity) from meal
+join user_records on meal.id = user_records.meal_id
+join food on food.id = user_records.food_id
+where user_id = 1 and date_posted = 'Feb 25 2019'
+
 create table diet_users (
     id serial primary key,
     auth0_id text,

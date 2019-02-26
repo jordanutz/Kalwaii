@@ -65,7 +65,6 @@ class Diary extends Component {
     const formattedDate = month + ' ' + day + ' ' + year
 
     axios.get(`/api/user/summary?user=${this.props.profile[0].user_id}&date=${formattedDate}`).then(res => {
-      console.log(res.data.calories)
       this.setState({
         totalCalories: res.data.calories,
         totalCarbohydrates: res.data.carbohydrates,

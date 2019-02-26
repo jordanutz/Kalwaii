@@ -23,7 +23,6 @@ module.exports = {
         fatMin: Math.round((calculatedCalories * 0.25) / 9),
         fatMax: Math.round((calculatedCalories * 0.35) / 9)
       }
-
       res.status(200).send(nutritionalInformation)
     })
     .catch(error => console.log('Unable to retrieve caloric expenditure', error))
@@ -45,8 +44,6 @@ module.exports = {
     console.log(user, date)
     db.get_total_calories([user, date])
     .then(nutrients => {
-
-      console.log(nutrients)
 
       let totalNutrients = {
         calories: parseInt(nutrients[0].total_calories),
