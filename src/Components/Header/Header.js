@@ -4,6 +4,7 @@ import axios from 'axios'
 import {logIn, logOut} from '../../redux/reducer'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
+import Hamburger from './assets/hamburger.svg'
 
 class Header extends Component {
 
@@ -35,16 +36,22 @@ class Header extends Component {
     return (
       <div className="Header">
         <div className="HeaderSecondary">
-          <ul>
+
+          <ul id="HeaderLinks">
             <Link style={{ textDecoration: 'none' }} to='/'><h1>Kalwaii</h1></Link>
-            <li>Features</li>
-            <li>Articles</li>
-            <li>Blog</li>
+            <div className="HeaderSublinks">
+              <li>Features</li>
+              <li>Articles</li>
+              <li>Blog</li>
+            </div>
           </ul>
-          <ul>
+
+          <ul id="HeaderLogin">
+            <img id="Hamburger" src={Hamburger} />
             {displayAccount}
             {displayLogin}
           </ul>
+
         </div>
       </div>
     )

@@ -15,20 +15,26 @@ footer {
     grid-template-columns: 1fr 1fr 1fr 1fr;
     border-bottom: 1px solid $secondary-color;
     border-top: 1px solid $secondary-color;
-  }
-  ul {
 
-    li {
-      list-style: none;
-      font-weight: 300;
-      font-size: .85rem;
-      text-align: center;
-      cursor: pointer;
-    }
-    li:hover {
-      font-weight: 500;
+    @media screen and (max-width: 760px) {
+      grid-template-columns: 1fr 1fr;
+      grid-row-gap: 20px;
     }
   }
+    ul {
+
+      li {
+        list-style: none;
+        font-weight: 300;
+        font-size: .85rem;
+        text-align: center;
+        cursor: pointer;
+      }
+
+      li:hover {
+        font-weight: 500;
+      }
+    }
 
   .FooterRegister {
     max-width: 70%;

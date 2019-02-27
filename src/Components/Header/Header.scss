@@ -1,7 +1,7 @@
 @import '../../index';
 
 .Header {
-  width: 100%;
+  max-width: 100%;
   height: 10vh;
   background: $accent-three;
   padding: 1rem;
@@ -12,20 +12,22 @@
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
-    align-items: center;
 
-    ul {
-      min-width: 400px;
-      height: 100%;
+    #HeaderLinks {
+      width: 50%;
       display: flex;
-      justify-content: space-evenly;
       align-items: center;
+
+      .HeaderSublinks {
+        display: flex;
+        min-width: 60%;
+        justify-content: space-evenly;
+      }
 
       h1 {
         font-weight: bolder;
         font-family: 'Maqueen Sans';
         font-size: 3em;
-        margin-right: 1rem;
         color: $accent-one;
       }
 
@@ -42,6 +44,27 @@
         font-weight: 500;
         text-decoration: none;
       }
+    }
+
+    @media screen and (max-width: 760px)  {
+      button {
+        display: none;
+      }
+
+      ul {
+        display: none;
+      }
+
+      li {
+        display: none;
+      }
+    }
+
+    #HeaderLogin {
+      min-width: 30%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
 
       span {
         font-size: .85rem;
@@ -74,6 +97,23 @@
       button:hover {
         font-weight: 700;
         text-decoration: none;
+      }
+
+      #Hamburger {
+        width: 40px;
+        height: 40px;
+      }
+
+      @media screen and (min-width: 760px) {
+        #Hamburger {
+          display: none;
+        }
+      }
+
+      @media screen and (max-width: 760px) {
+        button {
+          display: none;
+        }
       }
     }
   }
