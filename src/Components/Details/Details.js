@@ -3,6 +3,8 @@ import './Details.scss'
 import {Doughnut, Bar} from 'react-chartjs-2';
 import { Progress } from 'antd';
 
+// Images
+import Toggle from './assets/toggle.svg'
 
 class Details extends Component {
 
@@ -100,14 +102,14 @@ class Details extends Component {
 
     return (
       <div className="Details">
-        <h1 onClick={this.props.toggleDetails}>Close</h1>
+        <img src={Toggle} onClick={this.props.toggleDetails} />
         <div className="DetailsSecondary">
 
           <div className="DailyIntake">
             <h2>Daily Intake</h2>
             <div className="DailyIntakeHeader">
               <h3>Calories</h3>
-              <h3>{this.props.consumedCalories} / {this.props.caloricIntake} Calories</h3>
+              <h3>{this.props.consumedCalories} / {this.props.caloricIntake} Cals</h3>
             </div>
             <Progress id="Padding" percent={this.props.caloriesPercentage} showInfo={false} strokeColor={ this.props.consumedCalories === 0 ? 'white' : '#00FF91'} />
           </div>
@@ -168,7 +170,6 @@ class Details extends Component {
                     yAxes: [{
                       ticks: {
                         beginAtZero: true,
-      
                       }
                     }]
                   }

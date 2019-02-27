@@ -13,6 +13,8 @@ import {getProfile} from '../../redux/reducer'
 
 // React-Calendar
 import Calendar from 'react-calendar'
+
+// Images
 import CalendarIcon from './assets/calendar.svg'
 
 class Diary extends Component {

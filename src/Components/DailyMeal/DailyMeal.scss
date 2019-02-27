@@ -15,7 +15,6 @@
     justify-content: center;
     align-items: center;
     position: relative;
-    border-bottom-left-radius: 500px;
     border-bottom-right-radius: 500px;
 
     h1 {
@@ -144,6 +143,9 @@
             font-weight: bolder;
             font-size: 1.10rem;
             margin-left: 1.5rem;
+            max-width: 200px;
+            text-align: center;
+
           }
 
           h2 {
