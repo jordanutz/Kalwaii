@@ -30,6 +30,7 @@ const Homepage = (props) => {
         <img id="Peach" src={Peach} alt="Peach Icon" />
         <div id="Border"></div>
       </div>
+      <div className="Responsive">
       <div className="HomepageHeader">
         <h1>It's time to ditch MyFitnessPal.</h1>
         <p>Finding the right diet or exercise isn’t rocket science. Actually taking the right action can seem like it. With Kalwaii, take control of your goals: track your calories, create customized meal plans that suit your needs using our food database, and log your progress. Simplify your life. </p>
@@ -73,6 +74,7 @@ const Homepage = (props) => {
               <h4>Kawaii speaks with most other leading health apps, meaning you can enjoy a smoother road to health.</h4>
             </Carousel.Item>
           </Carousel>
+        </div>
         </div>
     </div>
   )
