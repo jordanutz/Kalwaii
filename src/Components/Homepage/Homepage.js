@@ -33,8 +33,9 @@ const Homepage = (props) => {
       <div className="HomepageHeader">
         <h1>It's time to ditch MyFitnessPal.</h1>
         <p>Finding the right diet or exercise isn’t rocket science. Actually taking the right action can seem like it. With Kalwaii, take control of your goals: track your calories, create customized meal plans that suit your needs using our food database, and log your progress. Simplify your life. </p>
-        <h2>Superior Features</h2>
-        <div className="HomepageCarousel">
+      </div>
+      <div className="HomepageCarousel">
+          <h2>Superior Features</h2>
           <Carousel controls={false}>
             <Carousel.Item>
               <div className="CarouselHeader">
@@ -73,7 +74,6 @@ const Homepage = (props) => {
             </Carousel.Item>
           </Carousel>
         </div>
-      </div>
     </div>
   )
 }
