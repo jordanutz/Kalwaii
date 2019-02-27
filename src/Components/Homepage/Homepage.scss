@@ -122,18 +122,18 @@
     .HomepageMain {
       position: relative;
       min-width: 100%;
-      background: red;
       height: auto;
       top: 0;
       display: flex;
       justify-content: center;
 
       #Laptop {
+        margin-left: 5rem;
         position: relative;
         width: 200px;
         height: 200px;
         left: 100px;
-        top: 40px;
+        top: 50px;
       }
 
       #Tree {
@@ -143,11 +143,45 @@
         top: 0;
         right: 0;
       }
+
+      #Cherry {
+        position: relative;
+        width: 30px;
+        height: 30px;
+        top: 40px;
+        right: 155px;
+      }
+
+      #Strawberry {
+        position: relative;
+        width: 30px;
+        height: 30px;
+        top: 65px;
+        right: 89px;
+      }
+
+      #Peach {
+        position: relative;
+        width: 30px;
+        height: 30px;
+        top: 50px;
+        left: 0;
+        transform: translateX(-250px)
+      }
+
+      #Bananas {
+        width: 30px;
+        height: 30px;
+        position: relative;
+        right: 130px;
+        top: 20px;
+        transform: rotate(-40deg);
+      }
     }
   }
 
   @media screen and (max-width: 760px) {
-     #Bananas, #Strawberry, #Jigglypuff, #Cherry, #Peach, #Border {
+    #Border, #Jigglypuff {
       display: none;
     }
   }
