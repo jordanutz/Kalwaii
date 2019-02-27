@@ -20,6 +20,16 @@ const Homepage = (props) => {
 
   return (
     <div className="Homepage">
+      <div className="HomepageMain">
+        <img id="Laptop" src={Laptop} alt="Laptop Icon" />
+        <img id="Tree" src={Tree} alt="Tree Icon" />
+        <img id="Bananas" src={Bananas} alt="Banana Icon" />
+        <img id="Strawberry" src={Strawberry} alt="Strawberry Icon" />
+        <img id="Jigglypuff" src={Jigglypuff} alt="Jigglypuff Icon" />
+        <img id="Cherry" src={Cherry} alt="Cherry Icon" />
+        <img id="Peach" src={Peach} alt="Peach Icon" />
+        <div id="Border"></div>
+      </div>
       <div className="HomepageHeader">
         <h1>It's time to ditch MyFitnessPal.</h1>
         <p>Finding the right diet or exercise isn’t rocket science. Actually taking the right action can seem like it. With Kalwaii, take control of your goals: track your calories, create customized meal plans that suit your needs using our food database, and log your progress. Simplify your life. </p>
@@ -63,16 +73,6 @@ const Homepage = (props) => {
             </Carousel.Item>
           </Carousel>
         </div>
-      </div>
-      <div className="HomepageMain">
-        <img id="Laptop" src={Laptop} alt="Laptop Icon" />
-        <img id="Tree" src={Tree} alt="Tree Icon" />
-        <img id="Bananas" src={Bananas} alt="Banana Icon" />
-        <img id="Strawberry" src={Strawberry} alt="Strawberry Icon" />
-        <img id="Jigglypuff" src={Jigglypuff} alt="Jigglypuff Icon" />
-        <img id="Cherry" src={Cherry} alt="Cherry Icon" />
-        <img id="Peach" src={Peach} alt="Peach Icon" />
-        <div id="Border"></div>
       </div>
     </div>
   )
