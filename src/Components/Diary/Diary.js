@@ -164,7 +164,6 @@ class Diary extends Component {
     const displayTotalCholesterol = this.state.totalCholesterol ? this.state.totalCholesterol : 0
     const displayTotalSodium = this.state.totalSodium ? this.state.totalSodium : 0
     const displayTotalPotassium = this.state.totalPotassium ? this.state.totalPotassium : 0
-
     const displayCaloricIntake = this.state.nutrition.calories ? parseInt(this.state.nutrition.calories) - displayTotalCalories : null
     const caloriesPercentage = this.state.nutrition.standardCalories && displayTotalCalories ? parseInt(Math.floor((displayTotalCalories / this.state.nutrition.standardCalories) * 100)) : 0
     const carbohydratesPercentage = this.state.nutrition.carbohydratesMax && displayTotalCarbohydrates ? parseInt(Math.floor((displayTotalCarbohydrates / this.state.nutrition.carbohydratesMax) * 100)) : 0
@@ -222,15 +221,15 @@ class Diary extends Component {
                   <Progress percent={fatPercentage} showInfo={false} />
                   <h4>{this.state.nutrition.fatMax - displayTotalFat}g left</h4>
                 </div>
-                <div className="Macronutrient">
+                <div id="Align" className="Macronutrient">
                   <h3>Protein</h3>
                   <Progress percent={proteinPercentage} showInfo={false} />
                   <h4>{this.state.nutrition.proteinMax - displayTotalProtein}g left</h4>
                 </div>
-              </div>
-              <div className="DiaryDetails">
-                <h2 id="Main" onClick={this.handleToggleDetails}>Details</h2>
-                {displayDetails}
+                <div className="DiaryDetails">
+                  <h2 id="Main" onClick={this.handleToggleDetails}>Details</h2>
+                  {displayDetails}
+                </div>
               </div>
             </div>
           </div>

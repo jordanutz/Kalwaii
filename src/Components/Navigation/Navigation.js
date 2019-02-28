@@ -4,6 +4,7 @@ import axios from 'axios'
 import {logIn, logOut} from '../../redux/reducer'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
+import Hamburger from '../Header/assets/hamburger.svg'
 
 class Navigation extends Component {
 
@@ -32,17 +33,18 @@ class Navigation extends Component {
     const displayLogin = this.props.user ? <button onClick={this.logout}>Logout</button> : <button onClick={this.login}>Login</button>
 
     return (
-      <header>
-        <nav>
-          <ul>
+      <nav>
+        <div className="NavigationSecondary">
+          <ul id="NavigationLinks">
             <Link style={{ textDecoration: 'none' }} to='/'><h1>Kalwaii</h1></Link>
           </ul>
-          <ul>
+          <ul id="NavigationLogin">
+            <img id="Hamburger" src={Hamburger} />
             {displayAccount}
             {displayLogin}
           </ul>
-        </nav>
-      </header>
+        </div>
+      </nav>
     )
   }
 }
