@@ -32,6 +32,12 @@
         padding-right: 1rem;
       }
 
+      @media screen and (max-width: 760px) {
+        h1 {
+          color: white;
+        }
+      }
+
       li {
         list-style: none;
         color: $accent-four;
@@ -64,7 +70,7 @@
     #HeaderLogin {
       min-width: 30%;
       display: flex;
-      justify-content: flex-end;
+      justify-content: space-evenly;
       align-items: center;
 
       span {
@@ -115,7 +121,23 @@
         button {
           display: none;
         }
+        span {
+          display: none;
+        }
+      }
+    }
+
+    @media screen and (max-width: 760px) {
+      #HeaderLogin {
+        justify-content: flex-end;
       }
     }
   }
+}
+
+@media screen and (max-width: 760px) {
+  .Header {
+    background: $secondary-color;
+  }
+
 }

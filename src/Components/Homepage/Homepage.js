@@ -75,7 +75,7 @@ const Homepage = (props) => {
             </Carousel.Item>
           </Carousel>
         </div>
-        </div>
+      </div>
     </div>
   )
 }

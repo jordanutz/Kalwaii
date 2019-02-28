@@ -1,5 +1,6 @@
 @import '../../index';
 
+
 .Homepage {
   max-width: 100%;
   min-height: auto;
@@ -13,7 +14,7 @@
 
   @media screen and (min-width: 760px) and (max-width: 1024px) {
     .Responsive {
-      padding-top: 1.5rem;
+      padding: 5rem 0 4rem 0;
       display: flex;
       min-height: 30vh;
     }
@@ -55,7 +56,6 @@
         text-align: center;
         margin: 0 auto;
         font-size: 2.5rem;
-
       }
 
       p {
@@ -185,14 +185,17 @@
       background: $secondary-color;
       height: auto;
       position: relative;
+      top: 0;
+      border-bottom-left-radius: 200px;
+      border-bottom-right-radius: 200px;
 
 
       #Laptop {
         position: relative;
-        width: 13rem;
-        height: 13rem;
+        width: 15rem;
+        height: 15rem;
         top: 45px;
-        left: 50px;
+        left: 66px;
         z-index: 10;
       }
 
@@ -237,7 +240,7 @@
         transform: rotate(-40deg);
       }
 
-       #Border, #Jigglypuff {
+       #Tree, #Cherry, #Strawberry, #Peach, #Bananas, #Border, #Jigglypuff {
         display: none;
     }
   }
@@ -250,14 +253,16 @@
       max-height: 400px;
       position: relative;
       top: 0;
-      padding: 1rem 0 3rem 0;
+      padding: 1rem 0 4rem 0;
+      border-bottom-left-radius: 300px;
+      border-bottom-right-radius: 300px;
 
       #Laptop {
         width: 25rem;
         height: 25rem;
         position: absolute;
-        top: 75px;
-        left: 50px;
+        top: 85px;
+        left: 180px;
       }
 
       #Tree {
