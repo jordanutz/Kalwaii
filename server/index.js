@@ -5,6 +5,7 @@ require('dotenv').config()
 const session = require('express-session')
 const app = express()
 const axios = require('axios')
+const path = require('path')
 
 // Controllers
 const auth = require('./controllers/auth_controller')
@@ -116,6 +117,10 @@ massive(process.env.CONNECTION_STRING).then(db => {
   app.set('db', db)
   console.log('Database is kickin')
 })
+
+app.get('*', (req, res)=>{
+    res.sendFile(path.join(__dirname, '../build/index.html'));
+});
 
 PORT = 6500;
 
