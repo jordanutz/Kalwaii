@@ -7,6 +7,12 @@ import {Link} from 'react-router-dom'
 import Hamburger from '../Header/assets/hamburger.svg'
 
 class Navigation extends Component {
+  constructor () {
+    super()
+    this.state = {
+      navigation: false
+    }
+  }
 
   login = () => {
     const redirectUri = encodeURIComponent(`${window.location.origin}/auth/callback`)
@@ -28,18 +34,33 @@ class Navigation extends Component {
    .catch(error => console.log(error))
  }
 
+ toggleNavigation = () => {
+   console.log('hit')
+   this.setState({
+     navigation: !this.state.navigation
+   })
+ }
+
   render () {
     const displayAccount = this.props.user && <Link style={{textDecoration: 'none', color: 'white'}} to={`/profile/${this.props.user.id}`}><span>My Profile</span></Link>
     const displayLogin = this.props.user ? <button onClick={this.logout}>Logout</button> : <button onClick={this.login}>Login</button>
+    const displayNavigation = this.state.navigation &&
+      <div className="MobileLinks">
+        <li>Features</li>
+        <li>Articles</li>
+        <li>Blog</li>
+        {displayLogin}
+      </div>
 
     return (
       <nav>
+        {displayNavigation}
         <div className="NavigationSecondary">
           <ul id="NavigationLinks">
             <Link style={{ textDecoration: 'none' }} to='/'><h1>Kalwaii</h1></Link>
           </ul>
           <ul id="NavigationLogin">
-            <img id="Hamburger" src={Hamburger} />
+            <img id="Hamburger" src={Hamburger} onClick={this.toggleNavigation} />
             {displayAccount}
             {displayLogin}
           </ul>

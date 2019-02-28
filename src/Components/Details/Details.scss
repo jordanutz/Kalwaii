@@ -124,3 +124,10 @@
     }
   }
 }
+
+@media screen and (max-width: 760px) {
+  .Details {
+    min-width: 100%;
+    transform: translateX(0%);
+  }
+}

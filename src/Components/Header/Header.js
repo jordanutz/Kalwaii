@@ -7,6 +7,12 @@ import {Link} from 'react-router-dom'
 import Hamburger from './assets/hamburger.svg'
 
 class Header extends Component {
+  constructor () {
+    super()
+    this.state = {
+      navigation: false
+    }
+  }
 
   login = () => {
     const redirectUri = encodeURIComponent(`${window.location.origin}/auth/callback`)
@@ -28,13 +34,28 @@ class Header extends Component {
    .catch(error => console.log(error))
   }
 
+  toggleNavigation = () => {
+    this.setState({
+      navigation: !this.state.navigation
+    })
+  }
+
   render () {
 
     const displayAccount = this.props.user && <Link to={`/profile/${this.props.user.id}`} style={{ textDecoration: 'none' }}><span>My Profile</span></Link>
     const displayLogin = this.props.user ? <button onClick={this.logout}>Logout</button> : <button onClick={this.login}>Login</button>
+    const displayNavigation = this.state.navigation ?
+      <div className="MobileLinks" value={this.state.navigation}>
+        <li>Features</li>
+        <li>Articles</li>
+        <li>Blog</li>
+          {displayAccount}
+          {displayLogin}
+      </div> : null
 
     return (
       <div className="Header">
+          {displayNavigation}
         <div className="HeaderSecondary">
 
           <ul id="HeaderLinks">
@@ -47,7 +68,7 @@ class Header extends Component {
           </ul>
 
           <ul id="HeaderLogin">
-            <img id="Hamburger" src={Hamburger} />
+            <img id="Hamburger" src={Hamburger} onClick={this.toggleNavigation} />
             {displayAccount}
             {displayLogin}
           </ul>

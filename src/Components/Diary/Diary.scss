@@ -65,8 +65,8 @@ main {
             'thing1 thing2 thing3'
             '. thing4 .';
           grid-template-rows: 1fr 1fr;
+          grid-column-gap: 20px;
           text-align: center;
-          grid-column-gap: 30px;
           margin-top: 1rem;
           align-items: center;
 
@@ -97,29 +97,44 @@ main {
             text-align: center;
             color: white;
           }
+
           .DiaryDetails {
             color: white;
 
             #Main {
                 color: white;
               }
-          }
-          @media screen and (max-width: 760px) {
-            .DiaryDetails {
-              display: none;
             }
-          }
         }
-
         @media screen and (max-width: 760px) {
           .DiaryMacronutrients {
+            min-width: 90vw;
+            margin-top: 2rem;
             grid-template-columns: 1fr 1fr;
+            grid-template-areas: 'thing1 thing2' 'thing3 thing4';
             grid-column-gap: 15px;
             grid-row-gap: 15px;
-            grid-auto-rows: auto;
 
           }
         }
+
+        @media screen and (min-width: 760px) and (max-width: 1024px) {
+          .DiaryMacronutrients {
+            grid-column-gap: 15px;
+          }
+        }
+      }
+    }
+  }
+
+  @media screen and (max-width: 760px) {
+    .DiaryHealth {
+      height: 440px;
+      align-items: center;
+
+      .DiaryCalories {
+        min-height: 90%;
+        justify-content: space-evenly;
       }
     }
   }
