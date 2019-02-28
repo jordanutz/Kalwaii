@@ -211,22 +211,22 @@ class Diary extends Component {
             </div>
             <div className="Nester">
               <div className="DiaryMacronutrients">
-                <div className="Macronutrient">
+                <div id="Carbohydrates" className="Macronutrient">
                   <h3>Carbohydrates</h3>
                   <Progress percent={carbohydratesPercentage} showInfo={false}  />
                   <h4>{this.state.nutrition.carbohydratesMax - displayTotalCarbohydrates}g left</h4>
                 </div>
-                <div className="Macronutrient">
+                <div id="Fat" className="Macronutrient">
                   <h3>Fat</h3>
                   <Progress percent={fatPercentage} showInfo={false} />
                   <h4>{this.state.nutrition.fatMax - displayTotalFat}g left</h4>
                 </div>
-                <div id="Align" className="Macronutrient">
+                <div id="Protein" className="Macronutrient">
                   <h3>Protein</h3>
                   <Progress percent={proteinPercentage} showInfo={false} />
                   <h4>{this.state.nutrition.proteinMax - displayTotalProtein}g left</h4>
                 </div>
-                <div className="DiaryDetails">
+                <div id="Details" className="DiaryDetails">
                   <h2 id="Main" onClick={this.handleToggleDetails}>Details</h2>
                   {displayDetails}
                 </div>

@@ -31,7 +31,7 @@
     }
   }
 
-  @media screen and (min-width: 760px) and (max-width: 1024px)  {
+  @media screen and (max-width: 1024px)  {
     .DailyMealHeader {
         border-bottom-left-radius: 0;
         border-bottom-right-radius: 0;
@@ -151,7 +151,7 @@
             font-weight: bolder;
             font-size: 1.10rem;
             margin-left: 1.5rem;
-            max-width: 200px;
+            max-width: 300px;
             text-align: center;
           }
 
@@ -181,6 +181,14 @@
             position: absolute;
             right: 0;
             bottom: 10px;
+          }
+        }
+
+        @media screen and (max-width: 1024px) {
+          .SelectedFood {
+            h1 {
+              max-width: 170px;
+            }
           }
         }
       }

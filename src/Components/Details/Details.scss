@@ -46,11 +46,16 @@
       max-width: 70%;
       margin: 0 auto;
       padding-bottom: .5rem;
+      color: black;
 
       .DailyIntakeHeader {
         width: 100%;
         display: flex;
         justify-content: space-between;
+
+        h3 {
+          color: $accent-four !important;
+        }
       }
 
       #Padding {
