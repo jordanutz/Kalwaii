@@ -15,6 +15,21 @@
     bottom: 0;
   }
 
+  @media screen and (max-width: 760px) {
+    #Sushi {
+      width: 20em;
+      height: 20em;
+      left : 0;
+    }
+  }
+
+  @media screen and (min-width: 760px) and (max-width: 1024px) {
+    #Sushi {
+      width: 30em;
+      height: 30em;
+    }
+  }
+
   .QuestionnaireMain {
     min-width: 450px;
     height: 450px;
@@ -85,6 +100,10 @@
         font-weight: 300;
         margin-top: 1rem;
 
+        h4 {
+          color: white;
+        }
+
         p {
           font-size: .85rem;
           margin-top: .25rem;
@@ -92,6 +111,21 @@
         }
       }
     }
+
+    @media screen and (max-width: 760px) {
+      .QuestionnaireSelection {
+        input {
+          margin: .25rem 0 .25rem 0;
+        }
+      }
+    }
+  }
+
+  @media screen and (max-width: 760px) {
+      .QuestionnaireMain {
+        min-width: 90%;
+        height: auto;
+      }
   }
 }
 

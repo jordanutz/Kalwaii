@@ -244,7 +244,7 @@ class Diary extends Component {
                 <img src={CalendarIcon} alt="Calendar"/>
                 <h2 onClick={this.toggleCalendar}>{displayDate}</h2>
               </div>
-              {displayCalendar}
+            {displayCalendar}
           </div>
           <div className="DiaryMealLog">
             <MealLog

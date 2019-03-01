@@ -14,19 +14,17 @@ Retrieves caloric expenditure for user:
 select (weight * gender_multiplier) * 24 * lean_factor_multiplier * activity_coefficient as caloric_expenditure
 from diet_users join diet_profile on diet_users.id = diet_profile.user_id where user_id = 1
 
-SELECT sum(calories) AS total_calories,
+SELECT SUM(calories) AS total_calories,
 SUM(carbohydrates) AS carbohydrates,
 SUM(fat) AS fat,
 SUM (protein) AS protein
 FROM food JOIN user_records ON food.id = user_records.food_id
 WHERE user_id = $1 AND date_posted = $2
 
-
-
-select sum(calories * quantity) from meal
-join user_records on meal.id = user_records.meal_id
-join food on food.id = user_records.food_id
-where user_id = 1 and date_posted = 'Feb 25 2019'
+SELECT SUM(calories * quantity) FRP, meal
+JOIN user_records ON meal.id = user_records.meal_id
+JOIN food ON food.id = user_records.food_id
+WHERE user_id = 1 AND date_posted = 'Feb 25 2019'
 
 create table diet_users (
     id serial primary key,
