@@ -2,43 +2,121 @@
 
 
 .Homepage {
-  max-width: 100%;
+  max-width: 70rem;
   min-height: auto;
-  background: $accent-three;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  align-items: flex-start;
-  padding: 2rem 0 5rem 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 1rem 0 5rem 0;
+  margin: 0 auto;
+
+  .ResponsiveTree {
+    display: none;
+  }
 
   @media screen and (min-width: 760px) and (max-width: 1024px) {
+
+    .ResponsiveTree {
+      display: inline-block;
+      min-width: 100%;
+      min-height: 40vh;
+      position: relative;
+
+      #MaxWidth {
+        width: 40rem;
+        height: 26rem;
+        margin: 0 auto;
+        position: relative;
+
+
+        #Tree {
+          width: 25rem;
+          height: 25rem;
+          position: absolute;
+          left: 0;
+          bottom: 0;
+        }
+
+        #Laptop {
+          width: 21rem;
+          height: 21rem;
+          right: 50px;
+          z-index: 1;
+        }
+
+        #Cherry {
+          position: absolute;
+          width: 4rem;
+          height: 4rem;
+          top: 100px;
+          right: 370px;
+        }
+
+        #Strawberry {
+          position: absolute;
+          width: 4rem;
+          height: 4rem;
+          top: 140px;
+          right: 295px;
+        }
+
+        #Peach {
+          position: absolute;
+          width: 4rem;
+          height: 4rem;
+          top: 110px;
+          right: 485px;
+        }
+
+        #Bananas {
+          width: 4rem;
+          height: 4rem;
+          position: absolute;
+          right: 435px;
+          top: 50px;
+          transform: rotate(-40deg);
+        }
+
+        #Apple {
+          width: 4rem;
+          height: 4rem;
+          position: absolute;
+          right: 470px;
+          top: 210px;
+          transform: rotate(-20deg);
+        }
+      }
+    }
+
     .Responsive {
-      padding: 5rem 0 4rem 0;
-      display: flex;
+      width: 100vw;
       min-height: 30vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      padding-top: 3rem;
+
     }
   }
 
+
   .HomepageHeader {
-    width: 80%;
+    max-width: 30rem;
     height: auto;
-    z-index: 10;
     display: flex;
     flex-direction: column;
+    margin-right: 1rem;
+    padding: 4rem 2rem 1rem 2rem;
+    margin: 0 auto;
 
     h1 {
       color: $accent-four;
       width: 100%;
       height: auto;
-      padding: 3rem 5rem 1rem 8rem;
       font-size: 3rem;
       font-weight: bolder;
+      padding-bottom: 1rem;
     }
 
     p {
-      padding: 0rem 5rem 1rem 8rem;
-      max-width: 600px;
       color: $accent-four;
       font-size: .85rem;
       font-weight: 300;
@@ -71,15 +149,11 @@
     .HomepageHeader {
       width: 100%;
       padding: 0 0 1rem 0;
-      display: flex;
-      padding-left: 2rem;
 
       h1 {
         font-size: 2.5rem;
-        max-width: 600px;
-        padding: 0;
         text-align: center;
-        margin: 0 auto;
+        padding-bottom: 0;
       }
 
       p {
@@ -92,7 +166,11 @@
   }
 
   .HomepageCarousel {
-    min-width: 400px;
+    max-width: 80%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
     img {
       width: 60px;
@@ -104,10 +182,10 @@
     }
 
     h2 {
-      padding: 1rem 5rem 1rem 8rem;
       font-size: 2rem;
       font-weight: 700;
       color: $accent-four;
+      padding-top: 1rem;
     }
 
     h3 {
@@ -157,9 +235,7 @@
 
   @media screen and (min-width: 760px) and (max-width: 1024px) {
     .HomepageCarousel {
-      min-width: 370px;
       padding: 0;
-      margin: 0 auto;
 
       .carousel {
         max-width: 100%;
@@ -175,145 +251,21 @@
     }
 
   .HomepageMain {
-    min-width: 800px;
+    max-width: 35rem;
     height: 600px;
-    position: absolute;
-    right: 0;
-    z-index: 20;
-    top: 5px;
+    position: relative;
+
   }
 
   @media screen and (max-width: 760px) {
     .HomepageMain {
-      z-index: 0;
-      min-width: 100vw;
-      background: $secondary-color;
-      height: auto;
-      position: relative;
-      top: 0;
-      border-bottom-left-radius: 200px;
-      border-bottom-right-radius: 200px;
-
-
-      #Laptop {
-        position: relative;
-        width: 15rem;
-        height: 15rem;
-        top: 45px;
-        left: 66px;
-        z-index: 10;
-      }
-
-      #Tree {
-        width: 13rem;
-        height: 13rem;
-        position: absolute;
-        right: 5px;
-        bottom: 0;
-      }
-
-      #Cherry {
-        position: absolute;
-        width: 30px;
-        height: 30px;
-        top: 20px;
-        right: 100px;
-      }
-
-      #Strawberry {
-        position: absolute;
-        width: 30px;
-        height: 30px;
-        top: 70px;
-        right: 35px;
-      }
-
-      #Peach {
-        position: absolute;
-        width: 30px;
-        height: 30px;
-        top: 55px;
-        right: 135px;
-      }
-
-      #Bananas {
-        width: 30px;
-        height: 30px;
-        position: absolute;
-        right: 80px;
-        top: 50px;
-        transform: rotate(-40deg);
-      }
-
-       #Tree, #Cherry, #Strawberry, #Peach, #Bananas, #Border, #Jigglypuff {
-        display: none;
-    }
+      display: none;
   }
 }
 
   @media screen and (min-width: 760px) and (max-width: 1024px) {
     .HomepageMain {
-      min-width: 100%;
-      background: $secondary-color;
-      max-height: 400px;
-      position: relative;
-      top: 0;
-      padding: 1rem 0 4rem 0;
-      border-bottom-left-radius: 300px;
-      border-bottom-right-radius: 300px;
-
-      #Laptop {
-        width: 25rem;
-        height: 25rem;
-        position: absolute;
-        top: 120px;
-        left: 179px;
-      }
-
-      #Tree {
-        width: 22rem;
-        height: 22rem;
-        position: absolute;
-        top: 15px;
-        right: 10px;
-      }
-
-      #Cherry {
-        width: 4rem;
-        height: 4rem;
-        position: absolute;
-        top: 45px;
-        right: 165px;
-      }
-
-      #Strawberry {
-        width: 4rem;
-        height: 4rem;
-        position: absolute;
-        top: 125px;
-        right: 55px;
-      }
-
-      #Peach {
-        width: 4rem;
-        height: 4rem;
-        position: absolute;
-        top: 100px;
-        right: 220px;
-      }
-
-      #Bananas {
-        width: 4rem;
-        height: 4rem;
-        position: absolute;
-        top: 95px;
-        right: 130px;
-        transform: rotate(-60deg);
-      }
-
-       #Jigglypuff, #Border {
-        display: none;
-      }
+      display: none;
     }
   }
 }
@@ -330,6 +282,7 @@
 @media screen and (min-width: 760px) and (max-width: 1024px) {
   .Homepage {
     padding: 0 0 1rem 0;
+    display: inline-block;
   }
 }
 
@@ -337,12 +290,12 @@
 // DO NOT TOUCH
 // --------------------------------------
 #Laptop {
-  width: 500px;
-  height: 500px;
+  width: 300px;
+  height: 300px;
   position: absolute;
-  right: 300px;
-  bottom: -65px;
-  z-index: 10;
+  right: 260px;
+  bottom: -45px;
+  z-index: 2;
 }
 
 #Tree {
@@ -370,18 +323,6 @@
   top: 200px;
 }
 
-#Jigglypuff {
-  width: 90px;
-  height: 100px;
-  position: absolute;
-  bottom: 75px;
-  right: 180px;
-  z-index: -1;
-  transform: rotate(30deg);
-  animation-name: slide;
-  animation-duration: 4s;
-}
-
 #Cherry {
   width: 70px;
   height: 70px;
@@ -399,8 +340,17 @@
   transform: rotate(-20deg);
 }
 
+#Apple {
+  width: 60px;
+  height: 60px;
+  position: absolute;
+  right: 370px;
+  top: 300px;
+  transform: rotate(-20deg);
+}
+
 #Border {
-  min-width: 95%;
+  min-width: 90%;
   position: absolute;
   height: 30px;
   background: $secondary-color;

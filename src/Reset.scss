@@ -27,3 +27,8 @@ time, mark, audio, video {
   font-family: 'Maqueen Sans';
   src: url('./fonts/Maqueen Sans.ttf') format('truetype');
 }
+
+.App {
+	min-height: 100vh;
+	background: #EEF0F2;
+}

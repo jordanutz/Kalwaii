@@ -9,7 +9,7 @@ nav {
   z-index: 30;
 
   .MobileLinks {
-    background: rgba(0, 255, 145, .8);
+    // background: rgba(0, 255, 145, .8);
     min-width: 70vw;
     min-height: 100vh;
     position: fixed;
@@ -21,6 +21,7 @@ nav {
     justify-content: center;
     align-items: center;
     padding: 1rem;
+    background: red;
 
     li {
       color: white;
@@ -39,7 +40,7 @@ nav {
 
 
   .NavigationSecondary {
-    max-width:  85%;
+    max-width: 85%;
     height: 100%;
     margin: 0 auto;
     display: flex;
@@ -49,6 +50,7 @@ nav {
       width: 50%;
       display: flex;
       align-items: center;
+
 
       .NavigationSublinks {
         display: flex;
