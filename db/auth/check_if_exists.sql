@@ -1,0 +1,1 @@
+SELECT * FROM diet_users WHERE email = $1;

@@ -10,15 +10,17 @@ import {withRouter} from 'react-router-dom'
 
 class App extends Component {
 
+
   render() {
 
     const displayNavigation = this.props.location.pathname === '/' ? <Header /> : <Navigation />
-
+    const displayFooter = this.props.location.pathname === '/'  && <Footer /> 
+    
     return (
       <div className="App">
         {displayNavigation}
         {routes}
-        <Footer/>
+        {displayFooter}
       </div>
     )
   }

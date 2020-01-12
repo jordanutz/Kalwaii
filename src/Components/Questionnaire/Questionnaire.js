@@ -201,8 +201,8 @@ class Questionnaire extends Component {
 
      const displayGoals = toggleQuestionnare.goals &&
        <div className="QuestionnaireSelection" value={toggleQuestionnare.goals}>
-         <h1>Let's set up your profile.</h1>
-         <h2>How can we help you?</h2>
+         <h1>{`Hi, ${this.props.user[0].name}`}</h1>
+         <h2>Let's set up your profile. How can we help you?</h2>
          <button className="QuestionnaireButton" onClick={goalToggleHealth}><h4>Be Healthier</h4><p>Eat well, train well, live well.</p></button>
          <button className="QuestionnaireButton" onClick={goalToggleWeight}><h4>Lose Weight</h4><p>Get lean without getting mean.</p></button>
          <button className="QuestionnaireButton" onClick={goalToggleStrong}><h4>Get Stronger</h4><p>Bulk up the sensible way.</p></button>
@@ -251,6 +251,7 @@ class Questionnaire extends Component {
 const mapStateToProps = (state) => {
   console.log(state)
   return {
+    user: state.user,
     profile: state.profile
   }
 }

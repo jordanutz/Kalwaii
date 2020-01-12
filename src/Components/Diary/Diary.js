@@ -7,6 +7,7 @@ import { Progress } from 'antd';
 import MealLog from '../MealLog/MealLog'
 import Details from '../Details/Details'
 
+
 // Redux
 import {connect} from 'react-redux'
 import {getProfile} from '../../redux/reducer'
@@ -16,6 +17,8 @@ import Calendar from 'react-calendar'
 
 // Images
 import CalendarIcon from './assets/calendar.svg'
+import femaleIcon from './assets/female.svg'
+import maleIcon from './assets/male.png'
 
 class Diary extends Component {
   constructor () {
@@ -120,6 +123,9 @@ class Diary extends Component {
   }
 
   render () {
+
+    console.log(this.props.profile[0].gender === 'male')
+
 
     // Calendar Formatted Date
     const curr_date = this.state.date.getDate()
@@ -227,7 +233,7 @@ class Diary extends Component {
                   <h4>{this.state.nutrition.proteinMax - displayTotalProtein}g left</h4>
                 </div>
                 <div id="Details" className="DiaryDetails">
-                  <h2 id="Main" onClick={this.handleToggleDetails}>Details</h2>
+                  <h2 id="Main" onClick={this.handleToggleDetails}>View Details</h2>
                   {displayDetails}
                 </div>
               </div>
@@ -236,8 +242,10 @@ class Diary extends Component {
         </div>
         <div className="DiaryUser">
           <div className="UserInformation">
-            <img id="border" src={this.props.profile[0].photo} alt="User Icon"/>
-            <h1> Welcome back, {this.props.profile[0].username}!</h1>
+            <div className="icon" id="border">
+              {this.props.profile[0].gender === 'male' ? <img src={maleIcon} /> : <img src={femaleIcon} /> }
+            </div>
+            <h1> Welcome, {this.props.user[0].name}!</h1>
             <h2 onClick={this.handleToggleGoal}>Goal: {displayGoal}</h2>
             {displayEditGoal}
               <div className="DiaryCalendar">
@@ -263,6 +271,7 @@ class Diary extends Component {
 
 const mapStateToProps = (state) => {
   return {
+    user: state.profile,
     profile: state.profile
   }
 }

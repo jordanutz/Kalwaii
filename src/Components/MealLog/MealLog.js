@@ -83,7 +83,7 @@ class MealLog extends Component {
               {snackIcon}
             </div>
             <div className="MealLogDetails">
-              <h2>Add {log.meal}</h2>
+              <h2>{log.meal}</h2>
               <h3>Recommended Calories: {recommendedBreakfast} {recommendedLunch} {recommendedDinner} {recommendedSnack}</h3>
               {totalBreakfast} {totalLunch} {totalDinner} {totalSnack}
             </div>

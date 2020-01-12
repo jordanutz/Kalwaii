@@ -7,35 +7,60 @@
   padding: 1rem;
 
   .MobileLinks {
-    background: rgba(0, 255, 145, .8);
-    min-width: 70vw;
+    background: rgba(1, 206, 117, 0.8);
+    min-width: 30vw;
     min-height: 100vh;
     position: fixed;
     z-index: 100;
     top: 0;
-    left: 0;
+    right: 0;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
     padding: 1rem;
+    box-shadow: rgba(25, 41, 61, 0.18) 1px 2px 3px 1px;
 
     span {
-      color: white;
-      font-size: 1.5rem;
+      cursor: pointer;
     }
 
-    li {
-      color: white;
-      list-style: none;
-      font-size: 1.5rem;
+    p {
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+
+    label {
+      color: #fff;
+      font-weight: 600;
+      text-align: left;
+    }
+
+    input {
+      margin-bottom: 1rem;
+      background: none;
+      border: none;
+      border-bottom: 1px solid #fff;
+      padding: .5rem 0;
+      color: #fff;
+    }
+
+    h2 {
+      font-weight: bolder;
+      font-family: 'Maqueen Sans';
+      font-size: 3em;
+      color: #eee;
+      text-align: center;
     }
 
     button {
       color: white;
       background: none;
-      border: none;
-      font-size: 1.5rem;
+      border: 2px solid #fff;
+      cursor: pointer;
+      margin: 0 auto;
+      padding: .75rem 3rem;
+      margin-top: 1.5rem;
+      border-radius: 20px;
 
     }
   }
@@ -61,7 +86,7 @@
       h1 {
         font-weight: bolder;
         font-family: 'Maqueen Sans';
-        font-size: 3em;
+        font-size: 3.5rem;
         color: $accent-one;
         padding-right: 1rem;
       }
@@ -129,7 +154,7 @@
         border-radius: 20px;
         color: $secondary-color;
         line-height: 20px;
-        padding: 5px 17px 7px;
+        padding: .5rem 2rem;
         top: 0;
         display: flex;
         justify-content: center;
@@ -151,13 +176,13 @@
         height: 40px;
       }
 
-      @media screen and (min-width: 760px) {
+      @media screen and (min-width: 767px) {
         #Hamburger {
           display: none;
         }
       }
 
-      @media screen and (max-width: 760px) {
+      @media screen and (max-width: 767px) {
         button {
           display: none;
         }
@@ -166,7 +191,7 @@
         }
       }
 
-      @media screen and (min-width: 760px) and (max-width: 1024px) {
+      @media screen and (min-width: 767px) and (max-width: 991px) {
         span {
           color: white;
         }
@@ -177,7 +202,7 @@
       }
     }
 
-    @media screen and (max-width: 760px) {
+    @media screen and (max-width: 767px) {
       #HeaderLogin {
         justify-content: flex-end;
       }
@@ -185,7 +210,7 @@
   }
 }
 
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 991px) {
   .Header {
     background: $secondary-color;
   }
