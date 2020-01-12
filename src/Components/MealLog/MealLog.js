@@ -75,6 +75,19 @@ class MealLog extends Component {
       const totalSnack = log.meal === 'Snack' && this.state.snackCalories ? <h4>{this.state.snackCalories}</h4> : null
 
         return (
+          <React.Fragment>
+          <Link to={{
+            pathname: `/profile/${this.props.profile[0].user_id}/foodlog/${log.id}`,
+            state: {
+              date: this.props.date,
+              displayDate: this.props.displayDate,
+              formattedDate: this.props.formattedDate,
+              breakfastCalories: recommendedBreakfast,
+              lunchCalories: recommendedLunch,
+              dinnerCalories: recommendedDinner,
+              snackCalories: recommendedSnack
+            }
+          }}>
           <div className="IndividualMealLog" key={log.id}>
             <div className="MealLogImage">
               {breakfastIcon}
@@ -87,25 +100,15 @@ class MealLog extends Component {
               <h3>Recommended Calories: {recommendedBreakfast} {recommendedLunch} {recommendedDinner} {recommendedSnack}</h3>
               {totalBreakfast} {totalLunch} {totalDinner} {totalSnack}
             </div>
-            <Link to={{
-                pathname: `/profile/${this.props.profile[0].user_id}/foodlog/${log.id}`,
-                state: {
-                  date: this.props.date,
-                  displayDate: this.props.displayDate,
-                  formattedDate: this.props.formattedDate,
-                  breakfastCalories: recommendedBreakfast,
-                  lunchCalories: recommendedLunch,
-                  dinnerCalories: recommendedDinner,
-                  snackCalories: recommendedSnack
-                }
-              }}><img id="Add" src={Add} alt="Add Food"/></Link>
+            <img id="Add" src={Add} alt="Add Food"/>
           </div>
+          </Link>
+          </React.Fragment>
         )
       })
 
     return (
       <div className="MealLog">
-        <h1>Total Calories: {this.props.totalCalories}</h1>
         {displayMealLog}
       </div>
     )

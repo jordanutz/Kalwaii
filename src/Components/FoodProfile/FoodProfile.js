@@ -69,12 +69,12 @@ class FoodProfile extends Component {
         </div>
         <div className="FoodProfileSecondary">
           <div className="FoodProfileMain">
-            <h1>{food.name}</h1>
-            <h2>Calories: {food.calories && food.calories * this.state.quantity}</h2>
+            <h2>{food.name}</h2>
           </div>
           <div className="FoodProfileDetails">
             <div className="FoodProfileAlign">
               <h3>Additional Information</h3>
+              <h4>Calories: {food.calories && food.calories * this.state.quantity}</h4>
               <h4>Protein: {food.protein && food.protein * this.state.quantity}g</h4>
               <h4>Carbohydrates: {food.carbohydrates && food.carbohydrates * this.state.quantity}g</h4>
               <h4>Fat: {food.fat && food.fat * this.state.quantity}g</h4>
@@ -88,7 +88,7 @@ class FoodProfile extends Component {
                 <NumericInput min={1} value={this.state.quantity} onChange={this.inputQuantity}/>
                 <h4>{food.preparation}</h4>
               </div>
-              <button onClick={() => this.submitLog(this.props.user.id,
+              <button onClick={() => this.submitLog(this.props.user[0].id,
                   this.props.location.state.meal,
                   food.id,
                   this.props.location.state.date,

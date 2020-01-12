@@ -25,7 +25,7 @@ class DailyMeal extends Component {
   }
 
   getSelectedFoods = () => {
-    axios.get(`/api/selected?user=${this.props.user.id}&meal=${this.props.match.params.id}&date=${this.props.location.state.formattedDate}&totalCalories=${this.state.totalCalories}`)
+    axios.get(`/api/selected?user=${this.props.user[0].id}&meal=${this.props.match.params.id}&date=${this.props.location.state.formattedDate}&totalCalories=${this.state.totalCalories}`)
     .then(res => {
       this.setState({
         selected: res.data.foods,
@@ -38,7 +38,8 @@ class DailyMeal extends Component {
     this.setState({
       searchInput: event.target.value
     })
-    axios.get(`/api/search?food=${this.state.searchInput}`).then(res => {
+    axios.get(`/api/search?food=${this.state.searchInput}`)
+    .then(res => {
       if (this.state.searchInput === '') {
         this.setState({
           search: []
@@ -52,7 +53,8 @@ class DailyMeal extends Component {
   }
 
   deleteSelection = (id) => {
-    axios.delete(`/api/foodlog?id=${id}&user=${this.props.user.id}&meal=${this.props.match.params.id}&date=${this.props.location.state.formattedDate}`).then(res => {
+    axios.delete(`/api/foodlog?id=${id}&user=${this.props.user[0].id}&meal=${this.props.match.params.id}&date=${this.props.location.state.formattedDate}`)
+    .then(res => {
       this.setState({
         selected: res.data
       })

@@ -32,3 +32,26 @@ time, mark, audio, video {
 	min-height: 100vh;
 	background: #EEF0F2;
 }
+
+.react-calendar__navigation button {
+	background: #33C9FF !important;
+   color: #fff !important;
+}
+
+button {
+	cursor: pointer;
+}
+
+.ant-progress-circle-path {
+	stroke: #5EFFBA !important;
+}
+
+.ant-progress-success-bg, .ant-progress-bg {
+	background: #5EFFBA!important;
+}
+
+.react-calendar {
+	width: 85 !important;
+	max-width: 450px;
+	border-radius: 5px;
+}

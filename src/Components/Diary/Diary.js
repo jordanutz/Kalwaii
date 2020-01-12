@@ -26,7 +26,7 @@ class Diary extends Component {
     this.state = {
       nutrition: {},
       date: new Date(),
-      toggleCalendar: false,
+      toggleCalendar: true,
       toggleDetails: false,
       toggleGoal: false,
       totalCalories: null,
@@ -124,9 +124,6 @@ class Diary extends Component {
 
   render () {
 
-    console.log(this.props.profile[0].gender === 'male')
-
-
     // Calendar Formatted Date
     const curr_date = this.state.date.getDate()
     const curr_month = this.state.date.getMonth() + 1
@@ -138,17 +135,7 @@ class Diary extends Component {
     const month = this.state.date.toLocaleString('en-us', { month: 'short' })
     const year = this.state.date.getFullYear()
     const formattedDate = month + ' ' + day + ' ' + year
-
-    const displayCalendar = this.state.toggleCalendar &&
-      <div className="Calendar">
-        <Calendar
-        onChange={this.handleDate}
-        value={this.state.date}
-        prev2Label={false}
-        next2Label={false}
-        />
-    </div>
-
+    
     const displayGoal = this.props.profile[0].goal === 'health' ? 'Be Healthy' : null ||
       this.props.profile[0].goal === 'stronger' ? 'Get Stronger' : null ||
       this.props.profile[0].goal === 'weight' ? 'Lose Weight' : null
@@ -245,14 +232,15 @@ class Diary extends Component {
             <div className="icon" id="border">
               {this.props.profile[0].gender === 'male' ? <img src={maleIcon} /> : <img src={femaleIcon} /> }
             </div>
-            <h1> Welcome, {this.props.user[0].name}!</h1>
-            <h2 onClick={this.handleToggleGoal}>Goal: {displayGoal}</h2>
-            {displayEditGoal}
-              <div className="DiaryCalendar">
-                <img src={CalendarIcon} alt="Calendar"/>
-                <h2 onClick={this.toggleCalendar}>{displayDate}</h2>
-              </div>
-            {displayCalendar}
+            <h1> Welcome, <span>{this.props.user[0].name}!</span></h1>
+            <div className="Calendar">
+              <Calendar
+                onChange={this.handleDate}
+                value={this.state.date}
+                prev2Label={false}
+                next2Label={false}
+              />
+            </div>
           </div>
           <div className="DiaryMealLog">
             <MealLog

@@ -20,7 +20,6 @@ class App extends Component {
       <div className="App">
         {displayNavigation}
         {routes}
-        {displayFooter}
       </div>
     )
   }
