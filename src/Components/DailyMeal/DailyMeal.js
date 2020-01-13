@@ -126,11 +126,11 @@ class DailyMeal extends Component {
               </div>
 
               <div className="DailyMealSubheader">
-                <h1>Total Calories: {this.state.totalCalories} </h1>
-                <h2>Recommended Calories: {this.props.location.state.breakfastCalories && this.props.location.state.breakfastCalories}
+                <h1><span>{this.state.totalCalories} </span><br/>Total</h1>
+                <h2><span>{this.props.location.state.breakfastCalories && this.props.location.state.breakfastCalories}
                   {this.props.location.state.lunchCalories && this.props.location.state.lunchCalories}
                   {this.props.location.state.dinnerCalories && this.props.location.state.dinnerCalories}
-                  {this.props.location.state.snackCalories && this.props.location.state.snackCalories}</h2>
+                  {this.props.location.state.snackCalories && this.props.location.state.snackCalories}</span><br/> Recommended</h2>
               </div>
 
               <div className="DailyMealResults">

@@ -14,11 +14,13 @@
     z-index: 100;
     top: 0;
     right: 0;
+    transform: translate3d(-100vw, 0, 0);
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 1rem;
+    padding: 1rem 3rem;
     box-shadow: rgba(25, 41, 61, 0.18) 1px 2px 3px 1px;
+    animation: slide-in .3s forwards;
 
     span {
       cursor: pointer;
@@ -213,5 +215,17 @@
 @media screen and (max-width: 991px) {
   .Header {
     background: $secondary-color;
+  }
+}
+
+@keyframes slide-in {
+  0% {
+    transform: translate3d(100vw, 0, 0);
+  }
+
+  100% {
+
+    transform: translate3d(0vw, 0, 0);
+  
   }
 }
